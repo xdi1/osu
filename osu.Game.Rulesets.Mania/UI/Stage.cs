@@ -34,7 +34,7 @@ namespace osu.Game.Rulesets.Mania.UI
 
         public const float COLUMN_SPACING = 1;
 
-        public const float HIT_TARGET_POSITION = 110;
+        public const float HIT_TARGET_POSITION = 150;
 
         public IReadOnlyList<Column> Columns => columnFlow.Content;
         private readonly ColumnFlow<Column> columnFlow;
@@ -209,7 +209,7 @@ namespace osu.Game.Rulesets.Mania.UI
         {
             // Due to masking differences, it is not possible to get the width of the columns container automatically
             // While masking on effectively only the Y-axis, so we need to set the width of the bar line container manually
-            barLineContainer.Width = columnFlow.Width;
+            barLineContainer.Width = columnFlow.Width / 5;
         }
     }
 }

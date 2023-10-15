@@ -11,6 +11,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Game.Rulesets.Mania.Beatmaps;
 using osu.Game.Rulesets.Mania.Skinning;
 using osu.Game.Skinning;
+using System;
 
 namespace osu.Game.Rulesets.Mania.UI
 {
@@ -62,27 +63,80 @@ namespace osu.Game.Rulesets.Mania.UI
 
         private void onSkinChanged()
         {
-            for (int i = 0; i < stageDefinition.Columns; i++)
+            int columnsCount = stageDefinition.Columns;
+            if (columnsCount == 8) 
             {
-                if (i > 0)
+                columns[0].Margin = new MarginPadding { Left = 738 };
+                columns[1].Margin = new MarginPadding { Left = 2 };
+                columns[2].Margin = new MarginPadding { Left = -370, Right = 370};
+                columns[3].Margin = new MarginPadding { Left = -368, Right = 368};
+                columns[4].Margin = new MarginPadding { Left = -738, Right = 738};
+                columns[5].Margin = new MarginPadding { Left = -736, Right = 736};
+                columns[6].Margin = new MarginPadding { Left = -734, Right = 734};
+                columns[7].Margin = new MarginPadding { Left = -732, Right = 732};
+                for (int i = 0; i < columnsCount; i++)
                 {
-                    float spacing = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
-                                                   new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.ColumnSpacing, i - 1))
-                                               ?.Value ?? Stage.COLUMN_SPACING;
+                    float? width = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
+                                                new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.ColumnWidth, i))
+                                            ?.Value;
 
-                    columns[i].Margin = new MarginPadding { Left = spacing };
+                    if (width == null)
+                        // only used by default skin (legacy skins get defaults set in LegacyManiaSkinConfiguration)
+                        columns[i].Width = stageDefinition.IsSpecialColumn(i) ? Column.SPECIAL_COLUMN_WIDTH : Column.COLUMN_WIDTH;
+                    else
+                        columns[i].Width = width.Value;
                 }
-
-                float? width = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
-                                              new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.ColumnWidth, i))
-                                          ?.Value;
-
-                if (width == null)
-                    // only used by default skin (legacy skins get defaults set in LegacyManiaSkinConfiguration)
-                    columns[i].Width = stageDefinition.IsSpecialColumn(i) ? Column.SPECIAL_COLUMN_WIDTH : Column.COLUMN_WIDTH;
-                else
-                    columns[i].Width = width.Value;
             }
+            else if (columnsCount == 10)
+            {
+                columns[0].Margin = new MarginPadding { Left = 738 };
+                columns[1].Margin = new MarginPadding { Left = 2 };
+                columns[2].Margin = new MarginPadding { Left = -370, Right = 370};
+                columns[3].Margin = new MarginPadding { Left = -368, Right = 368};
+                columns[4].Margin = new MarginPadding { Left = -738, Right = 738};
+                columns[5].Margin = new MarginPadding { Left = -736, Right = 736};
+                columns[6].Margin = new MarginPadding { Left = -734, Right = 734};
+                columns[7].Margin = new MarginPadding { Left = -732, Right = 732};
+                columns[8].Margin = new MarginPadding { Left = -730, Right = 730};
+                columns[9].Margin = new MarginPadding { Left = -728, Right = 728};
+                for (int i = 0; i < columnsCount; i++)
+                {
+                    float? width = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
+                                                new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.ColumnWidth, i))
+                                            ?.Value;
+
+                    if (width == null)
+                        // only used by default skin (legacy skins get defaults set in LegacyManiaSkinConfiguration)
+                        columns[i].Width = stageDefinition.IsSpecialColumn(i) ? Column.SPECIAL_COLUMN_WIDTH : Column.COLUMN_WIDTH;
+                    else
+                        columns[i].Width = width.Value;
+                }
+            }
+            else 
+            {
+                for (int i = 0; i < columnsCount; i++)
+                {
+                    if (i > 0)
+                    {
+                        float spacing = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
+                                                    new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.ColumnSpacing, i - 1))
+                                                ?.Value ?? Stage.COLUMN_SPACING;
+                        
+                        columns[i].Margin = new MarginPadding { Left = spacing, Right = spacing };
+                    }
+
+                    float? width = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
+                                                new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.ColumnWidth, i))
+                                            ?.Value;
+
+                    if (width == null)
+                        // only used by default skin (legacy skins get defaults set in LegacyManiaSkinConfiguration)
+                        columns[i].Width = stageDefinition.IsSpecialColumn(i) ? Column.SPECIAL_COLUMN_WIDTH : Column.COLUMN_WIDTH;
+                    else
+                        columns[i].Width = width.Value;
+                }
+            }
+            
         }
 
         /// <summary>

@@ -17,8 +17,8 @@ namespace osu.Game.Rulesets.Scoring
     {
         private static readonly DifficultyRange[] base_ranges =
         {
-            new DifficultyRange(HitResult.Perfect, 22.4D, 19.4D, 13.9D),
-            new DifficultyRange(HitResult.Great, 64, 49, 34),
+            new DifficultyRange(HitResult.Perfect, 44, 44, 44),
+            new DifficultyRange(HitResult.Great, 64, 64, 64),
             new DifficultyRange(HitResult.Good, 97, 82, 67),
             new DifficultyRange(HitResult.Ok, 127, 112, 97),
             new DifficultyRange(HitResult.Meh, 151, 136, 121),

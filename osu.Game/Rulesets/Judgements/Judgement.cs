@@ -124,16 +124,16 @@ namespace osu.Game.Rulesets.Judgements
                     return DEFAULT_MAX_HEALTH_INCREASE * 0.5;
 
                 case HitResult.SmallTickMiss:
-                    return -DEFAULT_MAX_HEALTH_INCREASE * 0.5;
+                    return 0;
 
                 case HitResult.LargeTickHit:
                     return DEFAULT_MAX_HEALTH_INCREASE;
 
                 case HitResult.LargeTickMiss:
-                    return -DEFAULT_MAX_HEALTH_INCREASE;
+                    return 0;
 
                 case HitResult.Miss:
-                    return -DEFAULT_MAX_HEALTH_INCREASE * 2;
+                    return 0;
 
                 case HitResult.Meh:
                     return DEFAULT_MAX_HEALTH_INCREASE * 0.05;

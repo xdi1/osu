@@ -19,7 +19,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
     internal partial class ArgonNotePiece : CompositeDrawable
     {
         public const float NOTE_HEIGHT = 25;
-        public const float NOTE_ACCENT_RATIO = 0.82f;
+        public const float NOTE_ACCENT_RATIO = 1f;
         public const float CORNER_RADIUS = 2.4f;
 
         private readonly IBindable<ScrollingDirection> direction = new Bindable<ScrollingDirection>();
@@ -63,7 +63,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                     Anchor = Anchor.BottomLeft,
                     Origin = Anchor.BottomLeft,
                     RelativeSizeAxes = Axes.X,
-                    Height = CORNER_RADIUS * 2,
+                    Height = CORNER_RADIUS * 0,
                 },
                 CreateIcon(),
             };
@@ -73,12 +73,12 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
         {
             Anchor = Anchor.Centre,
             Origin = Anchor.Centre,
-            Y = 4,
+            Y = 0,
             // TODO: replace with a non-squashed version.
             // The 0.7f height scale should be removed.
-            Icon = FontAwesome.Solid.AngleDown,
+            Icon = FontAwesome.Solid.Minus,
             Size = new Vector2(20),
-            Scale = new Vector2(1, 0.7f)
+            Scale = new Vector2(1, 1)
         };
 
         [BackgroundDependencyLoader(true)]

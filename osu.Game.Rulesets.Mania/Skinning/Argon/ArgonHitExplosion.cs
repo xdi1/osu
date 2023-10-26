@@ -1,6 +1,7 @@
 // Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
+using System;
 using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
@@ -11,6 +12,7 @@ using osu.Framework.Utils;
 using osu.Game.Rulesets.Judgements;
 using osu.Game.Rulesets.Mania.UI;
 using osu.Game.Rulesets.UI.Scrolling;
+using osuTK;
 using osuTK.Graphics;
 
 namespace osu.Game.Rulesets.Mania.Skinning.Argon
@@ -36,9 +38,12 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             Height = ArgonNotePiece.NOTE_HEIGHT;
         }
 
+        private RingExplosion? ringExplosion;
+
         [BackgroundDependencyLoader]
         private void load(IScrollingInfo scrollingInfo)
         {
+            
             InternalChildren = new Drawable[]
             {
                 largeFaint = new Container
@@ -54,6 +59,10 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                         RelativeSizeAxes = Axes.Both,
                     },
                 },
+                ringExplosion = new RingExplosion()
+                {
+                    Colour = Color4.White,
+                }
             };
 
             direction.BindTo(scrollingInfo.Direction);
@@ -95,6 +104,80 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
         public void Animate(JudgementResult result)
         {
             this.FadeOutFromOne(PoolableHitExplosion.DURATION, Easing.Out);
+            ringExplosion?.PlayAnimation();
+        }
+
+        private partial class RingExplosion : CompositeDrawable
+        {
+            private readonly float travel = 150;
+
+            public RingExplosion()
+            {
+                const float thickness = 4;
+
+                const float small_size = 9;
+                const float large_size = 14;
+
+                Anchor = Anchor.Centre;
+                Origin = Anchor.Centre;
+
+                Blending = BlendingParameters.Additive;
+
+                int countSmall = 0;
+                int countLarge = 0;
+
+                countSmall = 4;
+                countLarge = 4;
+
+                for (int i = 0; i < countSmall; i++)
+                    AddInternal(new RingPiece(thickness) { Size = new Vector2(small_size) });
+
+                for (int i = 0; i < countLarge; i++)
+                    AddInternal(new RingPiece(thickness) { Size = new Vector2(large_size) });
+            }
+
+            public void PlayAnimation()
+            {
+                foreach (var c in InternalChildren)
+                {
+                    const float start_position_ratio = 0.3f;
+
+                    float direction = RNG.NextSingle(0, 360);
+                    float distance = RNG.NextSingle(travel / 2, travel);
+
+                    c.MoveTo(new Vector2(
+                        MathF.Cos(direction) * distance * start_position_ratio,
+                        MathF.Sin(direction) * distance * start_position_ratio
+                    ));
+
+                    c.MoveTo(new Vector2(
+                        MathF.Cos(direction) * distance,
+                        MathF.Sin(direction) * distance
+                    ), 600, Easing.OutQuint);
+                }
+
+                this.FadeOutFromOne(1000, Easing.OutQuint);
+            }
+
+            public partial class RingPiece : CircularContainer
+            {
+                public RingPiece(float thickness = 9)
+                {
+                    Anchor = Anchor.Centre;
+                    Origin = Anchor.Centre;
+
+                    Masking = true;
+                    BorderThickness = thickness;
+                    BorderColour = Color4.White;
+
+                    Child = new Box
+                    {
+                        AlwaysPresent = true,
+                        Alpha = 0,
+                        RelativeSizeAxes = Axes.Both
+                    };
+                }
+            }
         }
     }
 }

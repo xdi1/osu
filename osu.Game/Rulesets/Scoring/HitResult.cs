@@ -35,22 +35,22 @@ namespace osu.Game.Rulesets.Scoring
         [Order(5)]
         Miss,
 
-        [Description(@"Meh")]
+        [Description(@"MAX 10%")]
         [EnumMember(Value = "meh")]
         [Order(4)]
         Meh,
 
-        [Description(@"OK")]
+        [Description(@"MAX 30%")]
         [EnumMember(Value = "ok")]
         [Order(3)]
         Ok,
 
-        [Description(@"Good")]
+        [Description(@"MAX 80%")]
         [EnumMember(Value = "good")]
         [Order(2)]
         Good,
 
-        [Description(@"Great")]
+        [Description(@"MAX 90%")]
         [EnumMember(Value = "great")]
         [Order(1)]
         Great,
@@ -62,7 +62,7 @@ namespace osu.Game.Rulesets.Scoring
         /// By default, this does not give any bonus accuracy or score.
         /// To have it affect scoring, consider adding a nested bonus object.
         /// </remarks>
-        [Description(@"Perfect")]
+        [Description(@"MAX 100%")]
         [EnumMember(Value = "perfect")]
         [Order(0)]
         Perfect,

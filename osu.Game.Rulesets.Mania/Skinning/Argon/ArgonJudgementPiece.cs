@@ -30,7 +30,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             AutoSizeAxes = Axes.Both;
 
             Origin = Anchor.Centre;
-            Y = 160;
+            Y = 140;
         }
 
         [BackgroundDependencyLoader]
@@ -52,7 +52,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 Origin = Anchor.Centre,
                 Blending = BlendingParameters.Additive,
                 Spacing = new Vector2(10, 0),
-                Font = OsuFont.Default.With(size: 28, weight: FontWeight.Regular),
+                Font = OsuFont.Default.With(size: 34, weight: FontWeight.Regular),
             };
 
         /// <summary>
@@ -93,14 +93,14 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
 
         private partial class RingExplosion : CompositeDrawable
         {
-            private readonly float travel = 52;
+            private readonly float travel = 0;
 
             public RingExplosion(HitResult result)
             {
-                const float thickness = 4;
+                const float thickness = 0;
 
-                const float small_size = 9;
-                const float large_size = 14;
+                const float small_size = 0;
+                const float large_size = 0;
 
                 Anchor = Anchor.Centre;
                 Origin = Anchor.Centre;

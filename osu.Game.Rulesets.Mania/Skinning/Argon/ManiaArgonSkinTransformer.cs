@@ -136,6 +136,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                         }
 
                     case LegacyManiaSkinConfigurationLookups.StagePaddingBottom:
+                        return SkinUtils.As<TValue>(new Bindable<float>(60));
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
 

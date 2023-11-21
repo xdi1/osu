@@ -9,22 +9,22 @@ using osu.Game.IO;
 
 namespace osu.Game.Skinning
 {
-    public class ArgonMaxSkin : ArgonSkin
+    public class ArgonFXSkin : ArgonSkin
     {
         public new static SkinInfo CreateInfo() => new SkinInfo
         {
-            ID = Skinning.SkinInfo.ARGON_MAX_SKIN,
-            Name = "osu! \"argon\" max",
+            ID = Skinning.SkinInfo.ARGON_FX_SKIN,
+            Name = "osu! \"argon\" fx",
             Creator = "1xdi",
             Protected = true,
-            InstantiationInfo = typeof(ArgonMaxSkin).GetInvariantInstantiationInfo()
+            InstantiationInfo = typeof(ArgonFXSkin).GetInvariantInstantiationInfo()
         };
 
         public override ISample? GetSample(ISampleInfo sampleInfo)
         {
             foreach (string lookup in sampleInfo.LookupNames)
             {
-                string remappedLookup = lookup.Replace(@"Gameplay/", @"Gameplay/ArgonMax/");
+                string remappedLookup = lookup.Replace(@"Gameplay/", @"Gameplay/ArgonFX/");
 
                 var sample = Samples?.Get(remappedLookup) ?? Resources.AudioManager?.Samples.Get(remappedLookup);
                 if (sample != null)
@@ -34,13 +34,13 @@ namespace osu.Game.Skinning
             return null;
         }
 
-        public ArgonMaxSkin(IStorageResourceProvider resources)
+        public ArgonFXSkin(IStorageResourceProvider resources)
             : this(CreateInfo(), resources)
         {
         }
 
         [UsedImplicitly(ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature)]
-        public ArgonMaxSkin(SkinInfo skin, IStorageResourceProvider resources)
+        public ArgonFXSkin(SkinInfo skin, IStorageResourceProvider resources)
             : base(skin, resources)
         {
         }

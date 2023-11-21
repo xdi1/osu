@@ -20,6 +20,7 @@ namespace osu.Game.Skinning
         internal static readonly Guid ARGON_SKIN = new Guid("CFFA69DE-B3E3-4DEE-8563-3C4F425C05D0");
         internal static readonly Guid ARGON_PRO_SKIN = new Guid("9FC9CF5D-0F16-4C71-8256-98868321AC43");
         internal static readonly Guid ARGON_MAX_SKIN = new Guid("1806481F-091B-448A-AE18-F41C2F73DD3D");
+        internal static readonly Guid ARGON_FX_SKIN = new Guid("C9420739-2005-42BC-A446-580C50653B3B");
         internal static readonly Guid CLASSIC_SKIN = new Guid("81F02CD3-EEC6-4865-AC23-FAE26A386187");
         internal static readonly Guid RANDOM_SKIN = new Guid("D39DFEFB-477C-4372-B1EA-2BCEA5FB8908");
 

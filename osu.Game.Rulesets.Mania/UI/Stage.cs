@@ -119,7 +119,7 @@ namespace osu.Game.Rulesets.Mania.UI
                     }
                 }
             };
-
+            List<Column> columnList = new List<Column>();
             for (int i = 0; i < definition.Columns; i++)
             {
                 bool isSpecial = definition.IsSpecialColumn(i);
@@ -130,13 +130,24 @@ namespace osu.Game.Rulesets.Mania.UI
                     Width = 1,
                     Action = { Value = isSpecial ? specialColumnStartAction++ : normalColumnStartAction++ }
                 };
-
-                topLevelContainer.Add(column.TopLevelContainer.CreateProxy());
-                columnBackgrounds.Add(column.BackgroundContainer.CreateProxy());
-                columnFlow.SetContentForColumn(i, column);
-                AddNested(column);
+                columnList.Add(column);
             }
-
+            for (int i = definition.Columns - 1; i > definition.Columns - 3; i--)
+            {
+                topLevelContainer.Add(columnList[i].TopLevelContainer.CreateProxy());
+                columnBackgrounds.Add(columnList[i].BackgroundContainer.CreateProxy());
+                columnFlow.SetContentForColumn(i, columnList[i]);
+            }
+            for (int i = 0; i < definition.Columns - 2; i++)
+            {
+                topLevelContainer.Add(columnList[i].TopLevelContainer.CreateProxy());
+                columnBackgrounds.Add(columnList[i].BackgroundContainer.CreateProxy());
+                columnFlow.SetContentForColumn(i, columnList[i]);
+            }
+            for (int i = 0; i < definition.Columns; i++)
+            {
+                AddNested(columnList[i]);
+            }
             RegisterPool<BarLine, DrawableBarLine>(50, 200);
         }
 
@@ -209,7 +220,7 @@ namespace osu.Game.Rulesets.Mania.UI
         {
             // Due to masking differences, it is not possible to get the width of the columns container automatically
             // While masking on effectively only the Y-axis, so we need to set the width of the bar line container manually
-            barLineContainer.Width = columnFlow.Width / 5;
+            barLineContainer.Width = columnFlow.Width;
         }
     }
 }

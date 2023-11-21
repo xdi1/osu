@@ -95,6 +95,7 @@ namespace osu.Game.Skinning
                 trianglesSkin = new TrianglesSkin(this),
                 argonSkin = new ArgonSkin(this),
                 new ArgonProSkin(this),
+                new ArgonMaxSkin(this)
             };
 
             // Ensure the default entries are present.

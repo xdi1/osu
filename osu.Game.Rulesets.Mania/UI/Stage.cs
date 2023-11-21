@@ -37,7 +37,7 @@ namespace osu.Game.Rulesets.Mania.UI
         public const float HIT_TARGET_POSITION = 150;
 
         public IReadOnlyList<Column> Columns => columnFlow.Content;
-        private readonly ColumnFlow<Column> columnFlow;
+        private readonly ColumnFlowMax<Column> columnFlow;
 
         private readonly JudgementContainer<DrawableManiaJudgement> judgements;
         private readonly DrawablePool<DrawableManiaJudgement> judgementPool;
@@ -100,7 +100,7 @@ namespace osu.Game.Rulesets.Mania.UI
                                 RelativeSizeAxes = Axes.Y,
                             }
                         },
-                        columnFlow = new ColumnFlow<Column>(definition)
+                        columnFlow = new ColumnFlowMax<Column>(definition)
                         {
                             RelativeSizeAxes = Axes.Y,
                         },

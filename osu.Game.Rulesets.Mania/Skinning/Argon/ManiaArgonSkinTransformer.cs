@@ -94,76 +94,39 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 switch (maniaLookup.Lookup)
                 {
                     case LegacyManiaSkinConfigurationLookups.ColumnSpacing:
-                        if (columnsCount < 8)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(2));
-                        }
-                        else if (columnIndex == 3)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(370));
-                        }
-                        else if (columnIndex == 4)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(368));
-                        } 
-                        else if (columnIndex == 5)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(740));
-                        }
-                        else if (columnIndex == 6)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(738));
-                        }
-                        else if (columnIndex == 7)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(736));
-                        }
-                        else if (columnIndex == 8)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(734));
-                        }
-                        else if (columnIndex == 9)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(732));
-                        }
-                        else if (columnIndex == 10)
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(730));
-                        }
-                        else
-                        {
-                            return SkinUtils.As<TValue>(new Bindable<float>(2));
-                        }
-
+                        return SkinUtils.As<TValue>(new Bindable<float>(2));
                     case LegacyManiaSkinConfigurationLookups.StagePaddingBottom:
                         return SkinUtils.As<TValue>(new Bindable<float>(60));
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
-
                     case LegacyManiaSkinConfigurationLookups.ColumnWidth:
-                        if (columnIndex == 1 || columnIndex == 0 || columnIndex == 2 || columnIndex == 3)
+                        if (columnsCount >= 8) 
                         {
-                            return SkinUtils.As<TValue>(new Bindable<float>(184));
-                        }
+                            if (columnIndex == 0 || columnIndex == 1 || (columnIndex == columnsCount - 1) || (columnIndex == columnsCount - 2))
+                            {
+                                return SkinUtils.As<TValue>(new Bindable<float>(184));
+                            }
+                            else
+                            {
+                                if (columnsCount == 8)
+                                {
+                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 91));
+                                }
+                                else if (columnsCount == 9)
+                                {
+                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
+                                }
+                                else 
+                                {
+                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
+                                }
+                            }
+                        } 
                         else
                         {
-                            if (columnsCount == 8 || columnsCount == 4)
-                            {
-                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 91));
-                            }
-                            else if (columnsCount == 9 || columnsCount == 5)
-                            {
-                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
-                            }
-                            else 
-                            {
-                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
-                            }
+                            return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
                         }
                         
-
-                        
-
                     case LegacyManiaSkinConfigurationLookups.ColumnBackgroundColour:
 
                         var colour = getColourForLayout(columnIndex, stage);
@@ -280,21 +243,21 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 8:
                     switch (columnIndex)
                     {
-                        case 0: return colour_pink;
+                        case 0: return colour_green;
 
                         case 1: return colour_pink;
 
-                        case 2: return colour_green;
+                        case 2: return colour_orange;
 
-                        case 3: return colour_green;
+                        case 3: return colour_cyan;
 
-                        case 4: return colour_orange;
+                        case 4: return colour_cyan;
 
-                        case 5: return colour_cyan;
+                        case 5: return colour_orange;
 
-                        case 6: return colour_cyan;
+                        case 6: return colour_pink;
 
-                        case 7: return colour_orange;
+                        case 7: return colour_green;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -302,37 +265,13 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 9:
                     switch (columnIndex)
                     {
-                        case 0: return colour_purple;
+                        case 0: return colour_green;
 
                         case 1: return colour_pink;
 
                         case 2: return colour_orange;
 
-                        case 3: return colour_yellow;
-
-                        case 4: return colour_special_column;
-
-                        case 5: return colour_yellow;
-
-                        case 6: return colour_orange;
-
-                        case 7: return colour_pink;
-
-                        case 8: return colour_purple;
-
-                        default: throw new ArgumentOutOfRangeException();
-                    }
-
-                case 10:
-                    switch (columnIndex)
-                    {
-                        case 0: return colour_pink;
-
-                        case 1: return colour_pink;
-
-                        case 2: return colour_green;
-
-                        case 3: return colour_green;
+                        case 3: return colour_cyan;
 
                         case 4: return colour_orange;
 
@@ -340,11 +279,35 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
 
                         case 6: return colour_orange;
 
+                        case 7: return colour_pink;
+
+                        case 8: return colour_green;
+
+                        default: throw new ArgumentOutOfRangeException();
+                    }
+
+                case 10:
+                    switch (columnIndex)
+                    {
+                        case 0: return colour_green;
+
+                        case 1: return colour_pink;
+
+                        case 2: return colour_orange;
+
+                        case 3: return colour_cyan;
+
+                        case 4: return colour_orange;
+
+                        case 5: return colour_orange;
+
+                        case 6: return colour_cyan;
+
                         case 7: return colour_orange;
 
-                        case 8: return colour_cyan;
+                        case 8: return colour_pink;
 
-                        case 9: return colour_orange;
+                        case 9: return colour_green;
 
                         default: throw new ArgumentOutOfRangeException();
                     }

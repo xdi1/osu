@@ -78,7 +78,8 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             // The 0.7f height scale should be removed.
             Icon = FontAwesome.Solid.Minus,
             Size = new Vector2(20),
-            Scale = new Vector2(1, 1)
+            Scale = new Vector2(1, 1),
+            Colour = new Color4(226, 0, 125, 255)
         };
 
         [BackgroundDependencyLoader(true)]

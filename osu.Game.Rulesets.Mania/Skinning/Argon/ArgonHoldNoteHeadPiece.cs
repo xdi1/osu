@@ -14,7 +14,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             Anchor = Anchor.Centre,
             Origin = Anchor.Centre,
             Y = 2,
-            Size = new Vector2(20, 5),
+            Size = new Vector2(0, 0),
         };
     }
 }

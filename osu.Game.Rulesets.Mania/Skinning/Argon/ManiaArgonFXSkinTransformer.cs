@@ -63,7 +63,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                             return new ArgonKeyArea();
 
                         case ManiaSkinComponents.HitExplosion:
-                            return new ArgonHitExplosion();
+                            return new EZHitExplosion();
                     }
 
                     break;
@@ -118,7 +118,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                 case 2:
                                     return SkinUtils.As<TValue>(new Bindable<float>(74));
                                 case 5:
-                                    return SkinUtils.As<TValue>(new Bindable<float>(230));
+                                    return SkinUtils.As<TValue>(new Bindable<float>(226));
                                 default:
                                     return SkinUtils.As<TValue>(new Bindable<float>(2));
                             }
@@ -164,11 +164,11 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                 }
                                 else if (columnsCount == 7)
                                 {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
+                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 74 : 72));
                                 }
                                 else 
                                 {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
+                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 60 : 60));
                                 }
                             }
                         } 

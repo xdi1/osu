@@ -62,7 +62,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                             return new ArgonKeyArea();
 
                         case ManiaSkinComponents.HitExplosion:
-                            return new ArgonHitExplosion();
+                            return new EZHitExplosion();
                     }
 
                     break;
@@ -73,14 +73,15 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
 
         private static readonly Color4 colour_special_column = new Color4(169, 106, 255, 255);
 
-        private const int total_colours = 6;
+        private const int total_colours = 7;
 
         private static readonly Color4 colour_yellow = new Color4(255, 197, 40, 255);
-        private static readonly Color4 colour_orange = new Color4(252, 109, 1, 255);
-        private static readonly Color4 colour_pink = new Color4(213, 35, 90, 255);
+        private static readonly Color4 colour_orange = new Color4(255, 173, 5, 255);
+        private static readonly Color4 colour_pink = new Color4(226, 0, 125, 255);
         private static readonly Color4 colour_purple = new Color4(203, 60, 236, 255);
-        private static readonly Color4 colour_cyan = new Color4(72, 198, 255, 255);
+        private static readonly Color4 colour_cyan = new Color4(68, 186, 254, 255);
         private static readonly Color4 colour_green = new Color4(100, 192, 92, 255);
+        private static readonly Color4 colour_white = new Color4(255, 255, 255, 255);
 
         public override IBindable<TValue>? GetConfig<TLookup, TValue>(TLookup lookup)
         {
@@ -88,12 +89,104 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             {
                 int columnIndex = maniaLookup.ColumnIndex ?? 0;
                 var stage = beatmap.GetStageForColumnIndex(columnIndex);
-
+                int columnsCount = stage.Columns;
                 switch (maniaLookup.Lookup)
                 {
                     case LegacyManiaSkinConfigurationLookups.ColumnSpacing:
-                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-
+                        if (columnsCount == 6)
+                            {
+                                switch(columnIndex)
+                                {
+                                    case 0:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                    case 1:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                    case 2:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                    case 4:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(126));
+                                    case 5:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(250));
+                                    default:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
+                                }
+                            } else if (columnsCount == 7)
+                            {
+                                switch(columnIndex)
+                                {
+                                    case 0:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                    case 1:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                    case 2:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                    case 5:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(248));
+                                    case 6:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(372));
+                                    default:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
+                                }
+                            } else if (columnsCount == 8)
+                            {
+                                switch(columnIndex)
+                                {
+                                    case 0:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                    case 1:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                    case 2:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                    case 6:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(250));
+                                    case 7:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(374));
+                                    default:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
+                                }
+                            } else if (columnsCount == 9)
+                            {
+                                switch(columnIndex)
+                                {
+                                    case 0:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                    case 1:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                    case 2:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                    case 7:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(372));
+                                    case 8:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(496));
+                                    default:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
+                                }
+                            } else if (columnsCount == 10)
+                            {
+                                switch(columnIndex)
+                                {
+                                    case 0:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                    case 1:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                    case 2:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                    case 8:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(374));
+                                    case 9:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(498));
+                                    default:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
+                                }
+                            } else {
+                                switch(columnIndex)
+                                {
+                                    case 0:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                    default:
+                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
+                                }
+                            }
                     case LegacyManiaSkinConfigurationLookups.StagePaddingBottom:
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
@@ -267,25 +360,25 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 10:
                     switch (columnIndex)
                     {
-                        case 0: return colour_purple;
+                        case 0: return colour_green;
 
                         case 1: return colour_pink;
 
-                        case 2: return colour_orange;
+                        case 2: return colour_white;
 
-                        case 3: return colour_yellow;
+                        case 3: return colour_cyan;
 
-                        case 4: return colour_green;
+                        case 4: return colour_white;
 
-                        case 5: return colour_cyan;
+                        case 5: return colour_white;
 
-                        case 6: return colour_yellow;
+                        case 6: return colour_cyan;
 
-                        case 7: return colour_orange;
+                        case 7: return colour_white;
 
                         case 8: return colour_pink;
 
-                        case 9: return colour_purple;
+                        case 9: return colour_green;
 
                         default: throw new ArgumentOutOfRangeException();
                     }

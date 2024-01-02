@@ -16,7 +16,7 @@ namespace osu.Game.Rulesets.Mania.Objects
         /// is timed alongside presses of other hit objects less awkward.
         /// Todo: This shouldn't exist for non-LegacyBeatmapDecoder beatmaps
         /// </summary>
-        public const double RELEASE_WINDOW_LENIENCE = 1.5;
+        public const double RELEASE_WINDOW_LENIENCE = 2.0;
 
         public override Judgement CreateJudgement() => new ManiaJudgement();
 

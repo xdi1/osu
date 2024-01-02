@@ -63,7 +63,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                             return new ArgonKeyArea();
 
                         case ManiaSkinComponents.HitExplosion:
-                            return new EZHitExplosion();
+                            return new ArgonHitExplosion();
                     }
 
                     break;

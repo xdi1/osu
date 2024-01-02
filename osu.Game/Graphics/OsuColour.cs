@@ -77,16 +77,12 @@ namespace osu.Game.Graphics
             {
                 case HitResult.IgnoreMiss:
                 case HitResult.SmallTickMiss:
-                    return Orange1;
-
                 case HitResult.Miss:
                 case HitResult.LargeTickMiss:
                 case HitResult.ComboBreak:
                     return Red;
 
                 case HitResult.Meh:
-                    return Yellow;
-
                 case HitResult.Ok:
                     return Green;
 

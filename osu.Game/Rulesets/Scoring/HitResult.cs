@@ -30,12 +30,12 @@ namespace osu.Game.Rulesets.Scoring
         /// This miss window should determine how early a hit can be before it is considered for judgement (as opposed to being ignored as
         /// "too far in the future). It should also define when a forced miss should be triggered (as a result of no user input in time).
         /// </remarks>
-        [Description(@"Miss")]
+        [Description(@"BREAK")]
         [EnumMember(Value = "miss")]
         [Order(5)]
         Miss,
 
-        [Description(@"MAX 10%")]
+        [Description(@"MAX 1%")]
         [EnumMember(Value = "meh")]
         [Order(4)]
         Meh,
@@ -45,12 +45,12 @@ namespace osu.Game.Rulesets.Scoring
         [Order(3)]
         Ok,
 
-        [Description(@"MAX 80%")]
+        [Description(@"MAX 90%")]
         [EnumMember(Value = "good")]
         [Order(2)]
         Good,
 
-        [Description(@"MAX 90%")]
+        [Description(@"MAX 100%")]
         [EnumMember(Value = "great")]
         [Order(1)]
         Great,

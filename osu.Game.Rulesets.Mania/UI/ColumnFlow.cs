@@ -13,7 +13,6 @@ using osu.Framework.Graphics.Containers;
 using osu.Game.Rulesets.Mania.Beatmaps;
 using osu.Game.Rulesets.Mania.Skinning;
 using osu.Game.Skinning;
-using System;
 using osuTK;
 
 namespace osu.Game.Rulesets.Mania.UI

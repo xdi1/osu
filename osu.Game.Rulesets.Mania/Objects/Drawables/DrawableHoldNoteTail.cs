@@ -44,7 +44,7 @@ namespace osu.Game.Rulesets.Mania.Objects.Drawables
             if (result > HitResult.Meh && hasComboBreak)
                 return HitResult.Meh;
 
-            return result;
+            return HitResult.Perfect;
         }
 
         public override bool OnPressed(KeyBindingPressEvent<ManiaAction> e) => false; // Handled by the hold note

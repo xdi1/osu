@@ -33,11 +33,8 @@ namespace osu.Game.Overlays.Login
         public Action? RequestHide;
 
         private void performLogin()
-        {
-            if (!string.IsNullOrEmpty(username.Text) && !string.IsNullOrEmpty(password.Text))
-                api.Login(username.Text, password.Text);
-            else
-                shakeSignIn.Shake();
+        {  
+            shakeSignIn.Shake();
         }
 
         [BackgroundDependencyLoader(permitNulls: true)]
@@ -116,21 +113,13 @@ namespace osu.Game.Overlays.Login
                             AutoSizeAxes = Axes.Y,
                             Child = new SettingsButton
                             {
-                                Text = UsersStrings.LoginButton,
+                                Text = "DO NOT SIGN IN!!",
                                 Action = performLogin
                             },
                         }
                     }
-                },
-                new SettingsButton
-                {
-                    Text = LoginPanelStrings.Register,
-                    Action = () =>
-                    {
-                        RequestHide?.Invoke();
-                        accountCreation.Show();
-                    }
                 }
+                
             };
 
             forgottenPasswordLink.AddLink(LayoutStrings.PopupLoginLoginForgot, $"{api.WebsiteRootUrl}/home/password-reset");

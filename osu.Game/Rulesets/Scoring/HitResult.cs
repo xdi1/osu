@@ -45,12 +45,12 @@ namespace osu.Game.Rulesets.Scoring
         [Order(3)]
         Ok,
 
-        [Description(@"MAX 90%")]
+        [Description(@"MAX 80%")]
         [EnumMember(Value = "good")]
         [Order(2)]
         Good,
 
-        [Description(@"MAX 100%")]
+        [Description(@"MAX 90%")]
         [EnumMember(Value = "great")]
         [Order(1)]
         Great,

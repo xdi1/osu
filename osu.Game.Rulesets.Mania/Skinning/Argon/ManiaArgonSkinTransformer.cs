@@ -89,11 +89,11 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             {
                 int columnIndex = maniaLookup.ColumnIndex ?? 0;
                 var stage = beatmap.GetStageForColumnIndex(columnIndex);
-                int columnsCount = stage.Columns;
+                int columnCount = stage.Columns;
                 switch (maniaLookup.Lookup)
                 {
                     case LegacyManiaSkinConfigurationLookups.ColumnSpacing:
-                        if (columnsCount == 6)
+                        if (columnCount == 6)
                             {
                                 switch(columnIndex)
                                 {
@@ -110,7 +110,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                     default:
                                         return SkinUtils.As<TValue>(new Bindable<float>(2));
                                 }
-                            } else if (columnsCount == 7)
+                            } else if (columnCount == 7)
                             {
                                 switch(columnIndex)
                                 {
@@ -127,7 +127,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                     default:
                                         return SkinUtils.As<TValue>(new Bindable<float>(2));
                                 }
-                            } else if (columnsCount == 8)
+                            } else if (columnCount == 8)
                             {
                                 switch(columnIndex)
                                 {
@@ -144,7 +144,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                     default:
                                         return SkinUtils.As<TValue>(new Bindable<float>(2));
                                 }
-                            } else if (columnsCount == 9)
+                            } else if (columnCount == 9)
                             {
                                 switch(columnIndex)
                                 {
@@ -161,7 +161,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                     default:
                                         return SkinUtils.As<TValue>(new Bindable<float>(2));
                                 }
-                            } else if (columnsCount == 10)
+                            } else if (columnCount == 10)
                             {
                                 switch(columnIndex)
                                 {

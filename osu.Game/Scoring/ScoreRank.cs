@@ -38,11 +38,11 @@ namespace osu.Game.Scoring
         SH,
 
         [LocalisableDescription(typeof(BeatmapsStrings), nameof(BeatmapsStrings.RankX))]
-        [Description(@"SS")]
+        [Description(@"PP")]
         X,
 
         [LocalisableDescription(typeof(BeatmapsStrings), nameof(BeatmapsStrings.RankXH))]
-        [Description(@"SS+")]
+        [Description(@"PP+")]
         XH,
     }
 }

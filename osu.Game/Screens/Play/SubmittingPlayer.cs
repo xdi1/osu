@@ -61,11 +61,6 @@ namespace osu.Game.Screens.Play
             AddInternal(new PlayerTouchInputDetector());
         }
 
-        protected override GameplayClockContainer CreateGameplayClockContainer(WorkingBeatmap beatmap, double gameplayStart) => new MasterGameplayClockContainer(beatmap, gameplayStart)
-        {
-            ShouldValidatePlaybackRate = true,
-        };
-
         protected override void LoadAsyncComplete()
         {
             base.LoadAsyncComplete();

@@ -94,103 +94,98 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 {
                     case LegacyManiaSkinConfigurationLookups.ColumnSpacing:
                         if (columnCount == 6)
+                        {
+                            switch(columnIndex)
                             {
-                                switch(columnIndex)
-                                {
-                                    case 0:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
-                                    case 1:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
-                                    case 2:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
-                                    case 4:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(126));
-                                    case 5:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(250));
-                                    default:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-                                }
-                            } else if (columnCount == 7)
-                            {
-                                switch(columnIndex)
-                                {
-                                    case 0:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
-                                    case 1:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
-                                    case 2:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
-                                    case 5:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(248));
-                                    case 6:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(372));
-                                    default:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-                                }
-                            } else if (columnCount == 8)
-                            {
-                                switch(columnIndex)
-                                {
-                                    case 0:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
-                                    case 1:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
-                                    case 2:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
-                                    case 6:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(250));
-                                    case 7:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(374));
-                                    default:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-                                }
-                            } else if (columnCount == 9)
-                            {
-                                switch(columnIndex)
-                                {
-                                    case 0:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
-                                    case 1:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
-                                    case 2:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
-                                    case 7:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(372));
-                                    case 8:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(496));
-                                    default:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-                                }
-                            } else if (columnCount == 10)
-                            {
-                                switch(columnIndex)
-                                {
-                                    case 0:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
-                                    case 1:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(62));
-                                    case 2:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(124));
-                                    case 8:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(374));
-                                    case 9:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(498));
-                                    default:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-                                }
-                            } else {
-                                switch(columnIndex)
-                                {
-                                    case 0:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(0));
-                                    default:
-                                        return SkinUtils.As<TValue>(new Bindable<float>(2));
-                                }
+                                case 0:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 4:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(126));
+                                case 5:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(250));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
                             }
+                        } else if (columnCount == 7)
+                        {
+                            switch(columnIndex)
+                            {
+                                case 0:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 5:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(248));
+                                case 6:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(372));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
+                            }
+                        } else if (columnCount == 8)
+                        {
+                            switch(columnIndex)
+                            {
+                                case 0:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 6:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(250));
+                                case 7:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(374));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
+                            }
+                        }
+                        else if (columnCount == 9)
+                        {
+                            switch(columnIndex)
+                            {
+                                case 0:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 7:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(372));
+                                case 8:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(496));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
+                            }
+                        }
+                        else if (columnCount == 10)
+                        {
+                            switch(columnIndex)
+                            {
+                                case 0:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 8:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(374));
+                                case 9:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(498));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
+                            }
+                        } else {
+                            return SkinUtils.As<TValue>(new Bindable<float>(2));
+                        }
                     case LegacyManiaSkinConfigurationLookups.StagePaddingBottom:
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
-
                     case LegacyManiaSkinConfigurationLookups.ColumnWidth:
                         bool isSpecialColumn = stage.IsSpecialColumn(columnIndex);
 
@@ -219,12 +214,12 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             switch (stage.Columns)
             {
                 case 1:
-                    return colour_yellow;
+                    return colour_white;
 
                 case 2:
                     switch (columnIndex)
                     {
-                        case 0: return colour_green;
+                        case 0: return colour_white;
 
                         case 1: return colour_cyan;
 
@@ -234,11 +229,11 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 3:
                     switch (columnIndex)
                     {
-                        case 0: return colour_green;
+                        case 0: return colour_white;
 
-                        case 1: return colour_special_column;
+                        case 1: return colour_cyan;
 
-                        case 2: return colour_cyan;
+                        case 2: return colour_white;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -246,13 +241,13 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 4:
                     switch (columnIndex)
                     {
-                        case 0: return colour_yellow;
+                        case 0: return colour_white;
 
-                        case 1: return colour_orange;
+                        case 1: return colour_cyan;
 
-                        case 2: return colour_pink;
+                        case 2: return colour_cyan;
 
-                        case 3: return colour_purple;
+                        case 3: return colour_white;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -260,15 +255,15 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 5:
                     switch (columnIndex)
                     {
-                        case 0: return colour_pink;
+                        case 0: return colour_white;
 
-                        case 1: return colour_orange;
+                        case 1: return colour_cyan;
 
-                        case 2: return colour_yellow;
+                        case 2: return colour_white;
 
-                        case 3: return colour_green;
+                        case 3: return colour_cyan;
 
-                        case 4: return colour_cyan;
+                        case 4: return colour_white;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -276,17 +271,17 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 6:
                     switch (columnIndex)
                     {
-                        case 0: return colour_pink;
+                        case 0: return colour_white;
 
-                        case 1: return colour_orange;
+                        case 1: return colour_cyan;
 
-                        case 2: return colour_green;
+                        case 2: return colour_white;
 
-                        case 3: return colour_cyan;
+                        case 3: return colour_white;
 
-                        case 4: return colour_orange;
+                        case 4: return colour_cyan;
 
-                        case 5: return colour_pink;
+                        case 5: return colour_white;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -294,19 +289,19 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 7:
                     switch (columnIndex)
                     {
-                        case 0: return colour_pink;
+                        case 0: return colour_white;
 
-                        case 1: return colour_orange;
+                        case 1: return colour_cyan;
 
-                        case 2: return colour_pink;
+                        case 2: return colour_white;
 
-                        case 3: return colour_special_column;
+                        case 3: return colour_cyan;
 
-                        case 4: return colour_pink;
+                        case 4: return colour_white;
 
-                        case 5: return colour_orange;
+                        case 5: return colour_cyan;
 
-                        case 6: return colour_pink;
+                        case 6: return colour_white;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -314,21 +309,21 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 8:
                     switch (columnIndex)
                     {
-                        case 0: return colour_purple;
+                        case 0: return colour_green;
 
                         case 1: return colour_pink;
 
-                        case 2: return colour_orange;
+                        case 2: return colour_white;
 
-                        case 3: return colour_green;
+                        case 3: return colour_cyan;
 
                         case 4: return colour_cyan;
 
-                        case 5: return colour_orange;
+                        case 5: return colour_white;
 
                         case 6: return colour_pink;
 
-                        case 7: return colour_purple;
+                        case 7: return colour_green;
 
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -336,23 +331,23 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 case 9:
                     switch (columnIndex)
                     {
-                        case 0: return colour_purple;
+                        case 0: return colour_green;
 
                         case 1: return colour_pink;
 
-                        case 2: return colour_orange;
+                        case 2: return colour_white;
 
-                        case 3: return colour_yellow;
+                        case 3: return colour_cyan;
 
-                        case 4: return colour_special_column;
+                        case 4: return colour_white;
 
-                        case 5: return colour_yellow;
+                        case 5: return colour_cyan;
 
-                        case 6: return colour_orange;
+                        case 6: return colour_white;
 
                         case 7: return colour_pink;
 
-                        case 8: return colour_purple;
+                        case 8: return colour_green;
 
                         default: throw new ArgumentOutOfRangeException();
                     }

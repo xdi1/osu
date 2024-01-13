@@ -106,58 +106,81 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                 default:
                                     return SkinUtils.As<TValue>(new Bindable<float>(2));
                             }
-                        } else {
+                        } else if (columnCount == 6)
+                        {
                             switch(columnIndex)
                             {
                                 case 0:
                                     return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 4:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(126));
+                                case 5:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(250));
                                 default:
                                     return SkinUtils.As<TValue>(new Bindable<float>(2));
                             }
+                        } else if (columnCount == 7)
+                        {
+                            switch(columnIndex)
+                            {
+                                case 0:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(0));
+                                case 1:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(62));
+                                case 2:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(124));
+                                case 5:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(248));
+                                case 6:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(372));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
+                            }
+                        } else {
+                            return SkinUtils.As<TValue>(new Bindable<float>(2));
                         }
                     case LegacyManiaSkinConfigurationLookups.StagePaddingBottom:
                         return SkinUtils.As<TValue>(new Bindable<float>(60));
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
                     case LegacyManiaSkinConfigurationLookups.ColumnWidth:
-                        if (columnCount >= 8) 
+                        
+                        if (columnIndex == 0 || columnIndex == 1 || (columnIndex == columnCount - 1) || (columnIndex == columnCount - 2))
                         {
-                            if (columnIndex == 0 || columnIndex == 1 || (columnIndex == columnCount - 1) || (columnIndex == columnCount - 2))
+                            if (columnCount == 4)
                             {
-                                if (columnCount == 4)
-                                {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 91));
-                                }
-                                else if (columnCount == 5)
-                                {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
-                                }
-                                else if (columnCount < 8)
-                                {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
-                                }
-                                return SkinUtils.As<TValue>(new Bindable<float>(184));
+                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 91));
                             }
-                            else
+                            else if (columnCount == 5)
                             {
-                                if (columnCount == 8 || columnCount == 4)
-                                {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 91));
-                                }
-                                else if (columnCount == 9 || columnCount == 5)
-                                {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
-                                }
-                                else 
-                                {
-                                    return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
-                                }
+                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
                             }
-                        } 
+                            else if (columnCount < 8)
+                            {
+                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
+                            }
+                            return SkinUtils.As<TValue>(new Bindable<float>(184));
+                        }
                         else
                         {
-                            return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
+                            if (columnCount == 8 || columnCount == 4)
+                            { 
+                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 91));
+                            }
+                            else if (columnCount == 9 || columnCount == 5)
+                            {
+                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 72));
+                            }
+                            else 
+                            {
+                                return SkinUtils.As<TValue>(new Bindable<float>(stage.IsSpecialColumn(columnIndex) ? 120 : 60));
+                            }
                         }
+                        
                         
                     case LegacyManiaSkinConfigurationLookups.ColumnBackgroundColour:
 
@@ -180,7 +203,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             switch (stage.Columns)
             {
                 case 1:
-                    return colour_yellow;
+                    return colour_white;
 
                 case 2:
                     switch (columnIndex)

@@ -137,7 +137,18 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                                 default:
                                     return SkinUtils.As<TValue>(new Bindable<float>(2));
                             }
-                        } else {
+                        } else if (columnCount == 4)
+                        {
+                            switch(columnIndex)
+                            {
+                                case 3:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(188));
+                                default:
+                                    return SkinUtils.As<TValue>(new Bindable<float>(2));
+                            }
+                        }
+                        else 
+                        {
                             switch(columnIndex)
                             {
                                 case 0:
@@ -207,7 +218,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             switch (stage.Columns)
             {
                 case 1:
-                    return colour_yellow;
+                    return colour_white;
 
                 case 2:
                     switch (columnIndex)

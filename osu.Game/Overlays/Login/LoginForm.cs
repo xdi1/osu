@@ -36,6 +36,7 @@ namespace osu.Game.Overlays.Login
         {  
             shakeSignIn.Shake();
         }
+        public override bool AcceptsFocus => true;
 
         [BackgroundDependencyLoader(permitNulls: true)]
         private void load(OsuConfigManager config, AccountCreationOverlay accountCreation)
@@ -133,7 +134,13 @@ namespace osu.Game.Overlays.Login
             }
         }
 
-        public override bool AcceptsFocus => true;
+        private void performLogin()
+        {
+            if (!string.IsNullOrEmpty(username.Text) && !string.IsNullOrEmpty(password.Text))
+                api.Login(username.Text, password.Text);
+            else
+                shakeSignIn.Shake();
+        }
 
         protected override bool OnClick(ClickEvent e) => true;
 

@@ -47,8 +47,8 @@ namespace osu.Desktop
             {
                 var windowsVersion = Environment.OSVersion.Version;
 
-                // While .NET 6 still supports Windows 7 and above, we are limited by realm currently, as they choose to only support 8.1 and higher.
-                // See https://www.mongodb.com/docs/realm/sdk/dotnet/#supported-platforms
+                // While .NET 8 only supports Windows 10 and above, running on Windows 7/8.1 may still work. We are limited by realm currently, as they choose to only support 8.1 and higher.
+                // See https://www.mongodb.com/docs/realm/sdk/dotnet/compatibility/
                 if (windowsVersion.Major < 6 || (windowsVersion.Major == 6 && windowsVersion.Minor <= 2))
                 {
                     // If users running in compatibility mode becomes more of a common thing, we may want to provide better guidance or even consider
@@ -102,7 +102,7 @@ namespace osu.Desktop
                 }
             }
 
-            using (DesktopGameHost host = Host.GetSuitableDesktopHost(gameName, new HostOptions { BindIPC = !tournamentClient }))
+            using (DesktopGameHost host = Host.GetSuitableDesktopHost(gameName, new HostOptions { IPCPort = !tournamentClient ? OsuGame.IPC_PORT : null }))
             {
                 if (!host.IsPrimaryInstance)
                 {

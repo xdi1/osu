@@ -62,7 +62,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
             accentColour = column.AccentColour.GetBoundCopy();
             accentColour.BindValueChanged(colour =>
             {
-                background.Colour = colour.NewValue.Darken(10).Opacity(0.8f);
+                background.Colour = Color4.Black.Darken(10).Opacity(0.8f);
                 brightColour = colour.NewValue.Opacity(0.6f);
                 dimColour = colour.NewValue.Opacity(0);
             }, true);

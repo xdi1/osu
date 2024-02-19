@@ -26,18 +26,18 @@ namespace osu.Game.Rulesets.Mania.UI
         /// <summary>
         /// All contents added to this <see cref="ColumnFlow{TContent}"/>.
         /// </summary>
-        public IReadOnlyList<TContent> Content =>
+        public TContent[] Content =>
             columnsST.Children.Take(1)
                 .Concat(columnsFX.Children.Take(1))
                 .Concat(columns.Children)
                 .Concat(columnsFX.Children.Skip(1))
                 .Concat(columnsST.Children.Skip(1))
                 .Select(c => c.Count == 0 ? null : (TContent)c.Child)
-                .ToList();
+                .ToArray();
 
-        private readonly FillFlowContainer<Container> columns;
-        private readonly FillFlowContainer<Container> columnsFX;
-        private readonly FillFlowContainer<Container> columnsST;
+        private readonly FillFlowContainer<Container<TContent>> columns;
+        private readonly FillFlowContainer<Container<TContent>> columnsFX;
+        private readonly FillFlowContainer<Container<TContent>> columnsST;
         private readonly StageDefinition stageDefinition;
         private readonly int columnCount;
 
@@ -54,19 +54,19 @@ namespace osu.Game.Rulesets.Mania.UI
 
             InternalChildren = new Drawable[]
             {
-                columnsST = new FillFlowContainer<Container>
+                columnsST = new FillFlowContainer<Container<TContent>>
                 {
                     RelativeSizeAxes = Axes.Y,
                     AutoSizeAxes = Axes.X,
                     Direction = FillDirection.Horizontal,
                 },
-                columnsFX = new FillFlowContainer<Container>
+                columnsFX = new FillFlowContainer<Container<TContent>>
                 {
                     RelativeSizeAxes = Axes.Y,
                     AutoSizeAxes = Axes.X,
                     Direction = FillDirection.Horizontal,
                 },
-                columns = new FillFlowContainer<Container>
+                columns = new FillFlowContainer<Container<TContent>>
                 {
                     RelativeSizeAxes = Axes.Y,
                     AutoSizeAxes = Axes.X,
@@ -76,16 +76,16 @@ namespace osu.Game.Rulesets.Mania.UI
             if (stageDefinition.Columns >= 6)
             {
                 for (int i = 0; i < 2; i++)
-                    columnsST.Add(new Container { RelativeSizeAxes = Axes.Y });
+                    columnsST.Add(new Container<TContent> { RelativeSizeAxes = Axes.Y });
                 for (int i = 0; i < 2; i++)
-                    columnsFX.Add(new Container { RelativeSizeAxes = Axes.Y });
+                    columnsFX.Add(new Container<TContent> { RelativeSizeAxes = Axes.Y });
                 for (int i = 0; i < stageDefinition.Columns-4; i++)
-                    columns.Add(new Container { RelativeSizeAxes = Axes.Y });
+                    columns.Add(new Container<TContent> { RelativeSizeAxes = Axes.Y });
             }
             else
             {
                 for (int i = 0; i < stageDefinition.Columns; i++)
-                    columns.Add(new Container { RelativeSizeAxes = Axes.Y });
+                    columns.Add(new Container<TContent> { RelativeSizeAxes = Axes.Y });
             }
         }
         private ISkinSource currentSkin;

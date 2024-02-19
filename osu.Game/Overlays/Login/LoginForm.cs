@@ -134,13 +134,6 @@ namespace osu.Game.Overlays.Login
             }
         }
 
-        private void performLogin()
-        {
-            if (!string.IsNullOrEmpty(username.Text) && !string.IsNullOrEmpty(password.Text))
-                api.Login(username.Text, password.Text);
-            else
-                shakeSignIn.Shake();
-        }
 
         protected override bool OnClick(ClickEvent e) => true;
 

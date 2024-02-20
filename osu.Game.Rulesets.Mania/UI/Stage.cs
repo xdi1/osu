@@ -135,7 +135,7 @@ namespace osu.Game.Rulesets.Mania.UI
             {
                 bool isSpecial = definition.IsSpecialColumn(i);
 
-                var column = new Column(firstColumnIndex + i, isSpecial)
+                var column = new Column(firstColumnIndex + i, definition.Columns, isSpecial)
                 {
                     RelativeSizeAxes = Axes.Both,
                     Width = 1,

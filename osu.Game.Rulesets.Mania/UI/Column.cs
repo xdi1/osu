@@ -37,6 +37,8 @@ namespace osu.Game.Rulesets.Mania.UI
         /// </summary>
         public readonly int Index;
 
+        public readonly int Columns;
+
         public readonly Bindable<ManiaAction> Action = new Bindable<ManiaAction>();
 
         public readonly ColumnHitObjectArea HitObjectArea;
@@ -58,9 +60,10 @@ namespace osu.Game.Rulesets.Mania.UI
 
         public readonly Bindable<Color4> AccentColour = new Bindable<Color4>(Color4.Black);
 
-        public Column(int index, bool isSpecial)
+        public Column(int index, int columns, bool isSpecial)
         {
             Index = index;
+            Columns = columns;
             IsSpecial = isSpecial;
 
             RelativeSizeAxes = Axes.Y;
@@ -108,11 +111,20 @@ namespace osu.Game.Rulesets.Mania.UI
             BackgroundContainer.Add(background);
             TopLevelContainer.Add(HitObjectArea.Explosions.CreateProxy());
 
-            RegisterPool<Note, DrawableNote>(10, 50);
-            RegisterPool<HoldNote, DrawableHoldNote>(10, 50);
-            RegisterPool<HeadNote, DrawableHoldNoteHead>(10, 50);
-            RegisterPool<TailNote, DrawableHoldNoteTail>(10, 50);
-            RegisterPool<HoldNoteBody, DrawableHoldNoteBody>(10, 50);
+            
+            if (Index < 2 || Index > Columns - 3) {
+                RegisterPool<Note, DrawableNoteFX>(10, 50);
+                RegisterPool<HoldNote, DrawableHoldNote>(10, 50);
+                RegisterPool<HeadNote, DrawableHoldNoteHeadFX>(10, 50);
+                RegisterPool<TailNote, DrawableHoldNoteTail>(10, 50);
+                RegisterPool<HoldNoteBody, DrawableHoldNoteBody>(10, 50);
+            } else {
+                RegisterPool<Note, DrawableNote>(10, 50);
+                RegisterPool<HoldNote, DrawableHoldNote>(10, 50);
+                RegisterPool<HeadNote, DrawableHoldNoteHead>(10, 50);
+                RegisterPool<TailNote, DrawableHoldNoteTail>(10, 50);
+                RegisterPool<HoldNoteBody, DrawableHoldNoteBody>(10, 50);
+            }
         }
 
         private void onSourceChanged()

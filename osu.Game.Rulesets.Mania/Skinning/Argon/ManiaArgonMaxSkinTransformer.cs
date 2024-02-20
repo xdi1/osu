@@ -53,8 +53,14 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                         case ManiaSkinComponents.HoldNoteHead:
                             return new ArgonHoldNoteHeadPiece();
 
+                        case ManiaSkinComponents.HoldNoteHeadFX:
+                            return new ArgonHoldNoteHeadPieceFX();
+
                         case ManiaSkinComponents.Note:
                             return new ArgonNotePiece();
+
+                        case ManiaSkinComponents.NoteFX:
+                            return new ArgonNotePieceFX();
 
                         case ManiaSkinComponents.HitTarget:
                             return new ArgonHitTarget();

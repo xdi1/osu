@@ -120,7 +120,7 @@ namespace osu.Game.Screens.Edit.Compose.Components.Timeline
         {
             // because only blueprints of objects which are alive (via pooling) are displayed in the timeline, it's feasible to do this every-update.
 
-            const int stack_offset = 5;
+            const int stack_offset = 6;
 
             // after the stack gets this tall, we can presume there is space underneath to draw subsequent blueprints.
             const int stack_reset_count = 3;

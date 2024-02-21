@@ -29,7 +29,7 @@ namespace osu.Game.Screens.Edit.Compose.Components.Timeline
 {
     public partial class TimelineHitObjectBlueprint : SelectionBlueprint<HitObject>
     {
-        private const float circle_size = 38;
+        private const float circle_size = 24;
 
         private Container? repeatsContainer;
 

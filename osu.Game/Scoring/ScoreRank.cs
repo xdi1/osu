@@ -35,6 +35,7 @@ namespace osu.Game.Scoring
 
         [LocalisableDescription(typeof(BeatmapsStrings), nameof(BeatmapsStrings.RankSH))]
         [Description(@"S+")]
+        // ReSharper disable once InconsistentNaming
         SH,
 
         [LocalisableDescription(typeof(BeatmapsStrings), nameof(BeatmapsStrings.RankX))]

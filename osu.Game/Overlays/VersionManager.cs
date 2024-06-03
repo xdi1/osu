@@ -60,7 +60,7 @@ namespace osu.Game.Overlays
                 }
             };
 
-            if (!game.IsDeployedBuild)
+            /*if (!game.IsDeployedBuild)
             {
                 mainFill.AddRange(new Drawable[]
                 {
@@ -79,7 +79,7 @@ namespace osu.Game.Overlays
                         Texture = textures.Get(@"Menu/dev-build-footer"),
                     },
                 });
-            }
+            }*/
         }
 
         protected override void PopIn()

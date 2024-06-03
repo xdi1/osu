@@ -51,6 +51,7 @@ using osu.Game.Screens.Edit.Timing;
 using osu.Game.Screens.Edit.Verify;
 using osu.Game.Screens.Play;
 using osu.Game.Users;
+using osu.Game.Skinning;
 using osuTK.Input;
 using WebCommonStrings = osu.Game.Resources.Localisation.Web.CommonStrings;
 
@@ -98,6 +99,7 @@ namespace osu.Game.Screens.Edit
 
         [Resolved]
         private BeatmapManager beatmapManager { get; set; }
+        private SkinManager skinManager { get; set; }
 
         [Resolved]
         private RulesetStore rulesets { get; set; }
@@ -208,7 +210,7 @@ namespace osu.Game.Screens.Edit
         }
 
         [BackgroundDependencyLoader]
-        private void load(OsuConfigManager config)
+        private void load(OsuConfigManager config, SkinManager skinManager)
         {
             var loadableBeatmap = Beatmap.Value;
 
@@ -260,8 +262,10 @@ namespace osu.Game.Screens.Edit
 
             // todo: remove caching of this and consume via editorBeatmap?
             dependencies.Cache(beatDivisor);
+            
+            var skin = skinManager.GetSkin(ArgonSkin.CreateInfo());
 
-            AddInternal(editorBeatmap = new EditorBeatmap(playableBeatmap, loadableBeatmap.GetSkin(), loadableBeatmap.BeatmapInfo));
+            AddInternal(editorBeatmap = new EditorBeatmap(playableBeatmap, skin, loadableBeatmap.BeatmapInfo));
             dependencies.CacheAs(editorBeatmap);
 
             editorBeatmap.UpdateInProgress.BindValueChanged(_ => updateSampleDisabledState());

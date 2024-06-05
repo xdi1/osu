@@ -26,7 +26,7 @@ namespace osu.Game.Rulesets.Mania.Scoring
 
         protected override double ComputeTotalScore(double comboProgress, double accuracyProgress, double bonusPortion)
         {
-            return 1000000 * Accuracy.Value;
+            return 1000000 * accuracyProgress;
         }
 
         protected override double GetComboScoreChange(JudgementResult result)

@@ -17,12 +17,12 @@ namespace osu.Game.Rulesets.Scoring
     {
         private static readonly DifficultyRange[] base_ranges =
         {
-            new DifficultyRange(HitResult.Perfect, 42, 42, 42),
-            new DifficultyRange(HitResult.Great, 54, 54, 54),
-            new DifficultyRange(HitResult.Good, 64, 64, 64),
-            new DifficultyRange(HitResult.Ok, 74, 74, 74),
-            new DifficultyRange(HitResult.Meh, 151, 136, 121),
-            new DifficultyRange(HitResult.Miss, 188, 173, 158),
+            new DifficultyRange(HitResult.Perfect, 63, 42, 21),
+            new DifficultyRange(HitResult.Great, 81, 54, 27),
+            new DifficultyRange(HitResult.Good, 94, 64, 32),
+            new DifficultyRange(HitResult.Ok, 111, 74, 37),
+            new DifficultyRange(HitResult.Meh, 151, 132, 66),
+            new DifficultyRange(HitResult.Miss, 188, 158, 77),
         };
 
         private double perfect;

@@ -24,7 +24,7 @@ namespace osu.Game.Rulesets.Mania.Difficulty
 {
     public class ManiaDifficultyCalculator : DifficultyCalculator
     {
-        private const double star_scaling_factor = 0.018;
+        private const double STAR_SCALING_FACTOR = 1;
 
         private readonly bool isForCurrentRuleset;
         private readonly double originalOverallDifficulty;
@@ -48,10 +48,12 @@ namespace osu.Game.Rulesets.Mania.Difficulty
 
             ManiaDifficultyAttributes attributes = new ManiaDifficultyAttributes
             {
-                StarRating = beatmap.Difficulty.OverallDifficulty,
+                //StarRating = beatmap.BeatmapInfo.StarRating,
+                StarRating = beatmap.BeatmapInfo.StarRating,
                 Mods = mods,
                 // In osu-stable mania, rate-adjustment mods don't affect the hit window.
                 // This is done the way it is to introduce fractional differences in order to match osu-stable for the time being.
+                GreatHitWindow = Math.Ceiling((int)(getHitWindow300(mods) * clockRate) / clockRate),
                 MaxCombo = beatmap.HitObjects.Sum(maxComboForObject),
             };
 

@@ -40,7 +40,7 @@ namespace osu.Game.Rulesets.Scoring
         [Order(4)]
         Meh,
 
-        [Description(@"MAX 30%")]
+        [Description(@"MAX 50%")]
         [EnumMember(Value = "ok")]
         [Order(3)]
         Ok,

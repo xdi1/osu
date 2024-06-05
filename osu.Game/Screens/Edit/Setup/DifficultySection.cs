@@ -48,11 +48,24 @@ namespace osu.Game.Screens.Edit.Setup
                     Label = BeatmapsetsStrings.ShowStatsStars,
                     FixedLabelWidth = LABEL_WIDTH,
                     Description = "",
-                    Current = new BindableFloat(Beatmap.Difficulty.OverallDifficulty)
+                    Current = new BindableFloat((float)Beatmap.BeatmapInfo.StarRating)
                     {
                         Default = 1,
                         MinValue = 0,
                         MaxValue = 15,
+                        Precision = 1f,
+                    }
+                },
+                OverallDifficultySlider = new LabelledSliderBar<float>
+                {
+                    Label = BeatmapsetsStrings.ShowStatsAccuracy,
+                    FixedLabelWidth = LABEL_WIDTH,
+                    Description = EditorSetupStrings.OverallDifficultyDescription,
+                    Current = new BindableFloat(Beatmap.Difficulty.OverallDifficulty)
+                    {
+                        Default = 5,
+                        MinValue = 0,
+                        MaxValue = 10,
                         Precision = 1f,
                     }
                 },
@@ -70,8 +83,8 @@ namespace osu.Game.Screens.Edit.Setup
             // for now, update these on commit rather than making BeatmapMetadata bindables.
             // after switching database engines we can reconsider if switching to bindables is a good direction.
             Beatmap.Difficulty.CircleSize = CircleSizeSlider.Current.Value;
-            Beatmap.Difficulty.OverallDifficulty = StarRatingSlider.Current.Value;
-
+            Beatmap.Difficulty.OverallDifficulty = OverallDifficultySlider.Current.Value;
+            Beatmap.BeatmapInfo.StarRating = StarRatingSlider.Current.Value;
 
             Beatmap.UpdateAllHitObjects();
             Beatmap.SaveState();

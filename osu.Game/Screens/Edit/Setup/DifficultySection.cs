@@ -45,9 +45,9 @@ namespace osu.Game.Screens.Edit.Setup
                 },
                 StarRatingSlider = new LabelledSliderBar<float>
                 {
-                    Label = BeatmapsetsStrings.ShowStatsCs,
+                    Label = BeatmapsetsStrings.ShowStatsStars,
                     FixedLabelWidth = LABEL_WIDTH,
-                    Description = EditorSetupStrings.CircleSizeDescription,
+                    Description = "",
                     Current = new BindableFloat(Beatmap.Difficulty.OverallDifficulty)
                     {
                         Default = 1,

@@ -48,7 +48,7 @@ namespace osu.Game.Screens.Select
 {
     public abstract partial class SongSelect : ScreenWithBeatmapBackground, IKeyBindingHandler<GlobalAction>
     {
-        public const float WEDGE_HEIGHT = 260;
+        public const float WEDGE_HEIGHT = 300;
         private const float BACKGROUND_BLUR = 20;
         private const float LEFT_AREA_PADDING = 20;
         public FilterControl FilterControl { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace osu.Game.Screens.Select
         private IDisposable? modSelectOverlayRegistration;
         private ModSpeedHotkeyHandler modSpeedHotkeyHandler = null!;
 
-        private AdvancedStats advancedStats = null!;
+        //private AdvancedStats advancedStats = null!;
 
         [Resolved]
         private MusicController music { get; set; } = null!;
@@ -259,6 +259,7 @@ namespace osu.Game.Screens.Select
                                                     Left = -BeatmapInfoWedge.BORDER_THICKNESS, // Hide the left border
                                                 },
                                             },
+                                            /*
                                             new Container
                                             {
                                                 RelativeSizeAxes = Axes.X,
@@ -294,14 +295,14 @@ namespace osu.Game.Screens.Select
                                                         }
                                                     },
                                                 }
-                                            },
+                                            },*/
                                             new Container
                                             {
                                                 RelativeSizeAxes = Axes.Both,
                                                 Padding = new MarginPadding
                                                 {
                                                     Bottom = Footer.HEIGHT,
-                                                    Top = WEDGE_HEIGHT + 70,
+                                                    Top = WEDGE_HEIGHT + 20,
                                                     Left = LEFT_AREA_PADDING,
                                                     Right = LEFT_AREA_PADDING * 2,
                                                 },
@@ -593,7 +594,7 @@ namespace osu.Game.Screens.Select
             // we can't run this in the debounced run due to the selected mods bindable not being debounced,
             // since mods could be updated to the new ruleset instances while the decoupled bindable is held behind,
             // therefore resulting in performing difficulty calculation with invalid states.
-            advancedStats.Ruleset.Value = ruleset;
+            //advancedStats.Ruleset.Value = ruleset;
 
             void run()
             {
@@ -851,7 +852,7 @@ namespace osu.Game.Screens.Select
 
             ModSelect.Beatmap = beatmap;
 
-            advancedStats.BeatmapInfo = beatmap.BeatmapInfo;
+            //advancedStats.BeatmapInfo = beatmap.BeatmapInfo;
 
             bool beatmapSelected = beatmap is not DummyWorkingBeatmap;
 

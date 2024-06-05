@@ -278,9 +278,9 @@ namespace osu.Game.Screens.Select
                     new FillFlowContainer
                     {
                         Name = "Centre-aligned metadata",
-                        Anchor = Anchor.CentreLeft,
-                        Origin = Anchor.TopLeft,
-                        Y = -7,
+                        Anchor = Anchor.BottomLeft,
+                        Origin = Anchor.BottomLeft,
+                        Y = -15,
                         Direction = FillDirection.Vertical,
                         Padding = new MarginPadding { Left = 25, Right = shear_width },
                         AutoSizeAxes = Axes.Y,

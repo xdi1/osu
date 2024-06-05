@@ -15,7 +15,7 @@ namespace osu.Game.Screens
     {
         public const float TRANSITION_LENGTH = 500;
 
-        private const float x_movement_amount = 50;
+        private const float X_MOVEMENT_AMOUNT = 50;
 
         private readonly bool animateOnEnter;
 
@@ -48,7 +48,8 @@ namespace osu.Game.Screens
         protected override void Update()
         {
             base.Update();
-            Scale = new Vector2(1 + x_movement_amount / DrawSize.X * 2);
+            //Scale = new Vector2(1 + X_MOVEMENT_AMOUNT / DrawSize.X * 2);
+            Scale = new Vector2(1);
         }
 
         public override void OnEntering(ScreenTransitionEvent e)
@@ -56,7 +57,7 @@ namespace osu.Game.Screens
             if (animateOnEnter)
             {
                 this.FadeOut();
-                this.MoveToX(x_movement_amount);
+                this.MoveToX(X_MOVEMENT_AMOUNT);
 
                 this.FadeIn(TRANSITION_LENGTH, Easing.InOutQuart);
                 this.MoveToX(0, TRANSITION_LENGTH, Easing.InOutQuart);
@@ -67,7 +68,7 @@ namespace osu.Game.Screens
 
         public override void OnSuspending(ScreenTransitionEvent e)
         {
-            this.MoveToX(-x_movement_amount, TRANSITION_LENGTH, Easing.InOutQuart);
+            this.MoveToX(-X_MOVEMENT_AMOUNT, TRANSITION_LENGTH, Easing.InOutQuart);
             base.OnSuspending(e);
         }
 
@@ -76,7 +77,7 @@ namespace osu.Game.Screens
             if (IsLoaded)
             {
                 this.FadeOut(TRANSITION_LENGTH, Easing.OutExpo);
-                this.MoveToX(x_movement_amount, TRANSITION_LENGTH, Easing.OutExpo);
+                this.MoveToX(X_MOVEMENT_AMOUNT, TRANSITION_LENGTH, Easing.OutExpo);
             }
 
             return base.OnExiting(e);

@@ -223,6 +223,7 @@ namespace osu.Game.Screens.Select
                             }
                         }
                     },
+                    /*
                     new FillFlowContainer
                     {
                         Name = "Topleft-aligned metadata",
@@ -241,7 +242,7 @@ namespace osu.Game.Screens.Select
                                 RelativeSizeAxes = Axes.X,
                             },
                         }
-                    },
+                    },*/
                     new FillFlowContainer
                     {
                         Name = "Topright-aligned metadata",
@@ -295,6 +296,12 @@ namespace osu.Game.Screens.Select
                             ArtistLabel = new TruncatingSpriteText
                             {
                                 Current = { BindTarget = artistBinding },
+                                Font = OsuFont.GetFont(size: 17, italics: true),
+                                RelativeSizeAxes = Axes.X,
+                            },
+                            VersionLabel = new TruncatingSpriteText
+                            {
+                                Text = beatmapInfo.DifficultyName,
                                 Font = OsuFont.GetFont(size: 17, italics: true),
                                 RelativeSizeAxes = Axes.X,
                             },

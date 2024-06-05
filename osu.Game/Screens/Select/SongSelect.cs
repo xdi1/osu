@@ -48,11 +48,9 @@ namespace osu.Game.Screens.Select
 {
     public abstract partial class SongSelect : ScreenWithBeatmapBackground, IKeyBindingHandler<GlobalAction>
     {
-        public static readonly float WEDGE_HEIGHT = 200;
-
-        protected const float BACKGROUND_BLUR = 20;
-        private const float left_area_padding = 20;
-
+        public const float WEDGE_HEIGHT = 260;
+        private const float BACKGROUND_BLUR = 20;
+        private const float LEFT_AREA_PADDING = 20;
         public FilterControl FilterControl { get; private set; } = null!;
 
         /// <summary>
@@ -257,7 +255,7 @@ namespace osu.Game.Screens.Select
                                                 RelativeSizeAxes = Axes.X,
                                                 Margin = new MarginPadding
                                                 {
-                                                    Right = left_area_padding,
+                                                    Right = LEFT_AREA_PADDING,
                                                     Left = -BeatmapInfoWedge.BORDER_THICKNESS, // Hide the left border
                                                 },
                                             },
@@ -267,8 +265,8 @@ namespace osu.Game.Screens.Select
                                                 Height = 90,
                                                 Padding = new MarginPadding(10)
                                                 {
-                                                    Left = left_area_padding,
-                                                    Right = left_area_padding * 2 + 5,
+                                                    Left = LEFT_AREA_PADDING,
+                                                    Right = LEFT_AREA_PADDING * 2 + 5,
                                                 },
                                                 Y = WEDGE_HEIGHT,
                                                 Children = new Drawable[]
@@ -304,8 +302,8 @@ namespace osu.Game.Screens.Select
                                                 {
                                                     Bottom = Footer.HEIGHT,
                                                     Top = WEDGE_HEIGHT + 70,
-                                                    Left = left_area_padding,
-                                                    Right = left_area_padding * 2,
+                                                    Left = LEFT_AREA_PADDING,
+                                                    Right = LEFT_AREA_PADDING * 2,
                                                 },
                                                 Child = BeatmapDetails = CreateBeatmapDetailArea().With(d =>
                                                 {

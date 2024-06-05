@@ -58,7 +58,7 @@ namespace osu.Game.Graphics.UserInterface
         /// Shows a float count as stars. Used as star difficulty display.
         /// </summary>
         /// <param name="starCount">Maximum amount of stars to display.</param>
-        public StarCounter(int starCount = 10)
+        public StarCounter(int starCount = 15)
         {
             StarCount = Math.Max(starCount, 0);
 

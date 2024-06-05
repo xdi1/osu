@@ -32,10 +32,10 @@ namespace osu.Game.Rulesets.Scoring
         public const double MAX_SCORE = 1000000;
 
         private const double accuracy_cutoff_x = 1;
-        private const double accuracy_cutoff_s = 0.95;
-        private const double accuracy_cutoff_a = 0.9;
-        private const double accuracy_cutoff_b = 0.8;
-        private const double accuracy_cutoff_c = 0.7;
+        private const double accuracy_cutoff_s = 0.98;
+        private const double accuracy_cutoff_a = 0.95;
+        private const double accuracy_cutoff_b = 0.9;
+        private const double accuracy_cutoff_c = 0.8;
         private const double accuracy_cutoff_d = 0;
 
         /// <summary>

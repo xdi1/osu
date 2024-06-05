@@ -15,7 +15,7 @@ namespace osu.Game.Rulesets.Judgements
         /// The default health increase for a maximum judgement, as a proportion of total health.
         /// By default, each maximum judgement restores 5% of total health.
         /// </summary>
-        protected const double DEFAULT_MAX_HEALTH_INCREASE = 0.05;
+        protected const double DEFAULT_MAX_HEALTH_INCREASE = 0;
 
         /// <summary>
         /// The maximum <see cref="HitResult"/> that can be achieved.

@@ -87,6 +87,7 @@ namespace osu.Game.Beatmaps.Formats
             writer.WriteLine(FormattableString.Invariant($"StackLeniency: {beatmap.BeatmapInfo.StackLeniency}"));
             writer.WriteLine(FormattableString.Invariant($"Mode: {onlineRulesetID}"));
             writer.WriteLine(FormattableString.Invariant($"LetterboxInBreaks: {(beatmap.BeatmapInfo.LetterboxInBreaks ? '1' : '0')}"));
+            writer.WriteLine(FormattableString.Invariant($"StarRating: {beatmap.BeatmapInfo.StarRating}"));
             // if (beatmap.BeatmapInfo.UseSkinSprites)
             //     writer.WriteLine(@"UseSkinSprites: 1");
             // if (b.AlwaysShowPlayfield)

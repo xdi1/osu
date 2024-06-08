@@ -416,6 +416,7 @@ namespace osu.Game.Beatmaps
                         OnlineID = decodedInfo.OnlineID,
                         AudioLeadIn = decodedInfo.AudioLeadIn,
                         StackLeniency = decodedInfo.StackLeniency,
+                        StarRating = decodedInfo.StarRating,
                         SpecialStyle = decodedInfo.SpecialStyle,
                         LetterboxInBreaks = decodedInfo.LetterboxInBreaks,
                         WidescreenStoryboard = decodedInfo.WidescreenStoryboard,

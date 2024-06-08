@@ -241,6 +241,10 @@ namespace osu.Game.Beatmaps.Formats
                     beatmap.BeatmapInfo.AudioLeadIn = Parsing.ParseInt(pair.Value);
                     break;
 
+                case @"StarRating":
+                    beatmap.BeatmapInfo.StarRating = Parsing.ParseDouble(pair.Value);
+                    break;
+
                 case @"PreviewTime":
                     int time = Parsing.ParseInt(pair.Value);
                     metadata.PreviewTime = time == -1 ? time : getOffsetTime(time);

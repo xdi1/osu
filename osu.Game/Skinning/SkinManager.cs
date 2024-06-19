@@ -96,7 +96,6 @@ namespace osu.Game.Skinning
                 argonSkin = new ArgonSkin(this),
                 new ArgonProSkin(this),
                 new ArgonMaxSkin(this),
-                new ArgonFXSkin(this)
             };
 
             // Ensure the default entries are present.

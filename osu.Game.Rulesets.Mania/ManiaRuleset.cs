@@ -77,8 +77,8 @@ namespace osu.Game.Rulesets.Mania
                 case ArgonMaxSkin:
                     return new ManiaArgonMaxSkinTransformer(skin, beatmap);
 
-                case ArgonFXSkin:
-                    return new ManiaArgonFXSkinTransformer(skin, beatmap);
+                //case ArgonFXSkin:
+                    //return new ManiaArgonFXSkinTransformer(skin, beatmap);
 
                 case ArgonSkin:
                     return new ManiaArgonSkinTransformer(skin, beatmap);

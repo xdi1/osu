@@ -129,7 +129,7 @@ namespace osu.Game.Beatmaps
             if (localBeatmapInfo == null || localRulesetInfo == null)
             {
                 // If not, fall back to the existing star difficulty (e.g. from an online source).
-                return Task.FromResult<StarDifficulty?>(new StarDifficulty(beatmapInfo.StarRating, (beatmapInfo as IBeatmapOnlineInfo)?.MaxCombo ?? 0));
+                return Task.FromResult<StarDifficulty?>(new StarDifficulty(beatmapInfo.DifficultyName, beatmapInfo.StarRating, (beatmapInfo as IBeatmapOnlineInfo)?.MaxCombo ?? 0));
             }
 
             return GetAsync(new DifficultyCacheLookup(localBeatmapInfo, localRulesetInfo, mods), cancellationToken);
@@ -240,7 +240,7 @@ namespace osu.Game.Beatmaps
                 var calculator = ruleset.CreateDifficultyCalculator(beatmapManager.GetWorkingBeatmap(key.BeatmapInfo));
                 var attributes = calculator.Calculate(key.OrderedMods, cancellationToken);
 
-                return new StarDifficulty(attributes);
+                return new StarDifficulty(beatmapInfo.DifficultyName, attributes);
             }
             catch (OperationCanceledException)
             {

@@ -21,6 +21,8 @@ namespace osu.Game.Beatmaps
         /// </summary>
         public readonly int MaxCombo;
 
+        public readonly string difficultyName = "";
+
         /// <summary>
         /// The difficulty attributes computed for the given beatmap.
         /// Might not be available if the star difficulty is associated with a beatmap that's not locally available.
@@ -40,6 +42,14 @@ namespace osu.Game.Beatmaps
             // Todo: Add more members (BeatmapInfo.DifficultyRating? Attributes? Etc...)
         }
 
+        public StarDifficulty(string difficulty, [NotNull] DifficultyAttributes attributes)
+        {
+            Stars = double.IsFinite(attributes.StarRating) ? attributes.StarRating : 0;
+            MaxCombo = attributes.MaxCombo;
+            Attributes = attributes;
+            // Todo: Add more members (BeatmapInfo.DifficultyRating? Attributes? Etc...)
+        }
+
         /// <summary>
         /// Creates a <see cref="StarDifficulty"/> structure with a pre-populated star difficulty and max combo
         /// in scenarios where computing <see cref="DifficultyAttributes"/> is not feasible (i.e. when working with online sources).
@@ -47,6 +57,18 @@ namespace osu.Game.Beatmaps
         public StarDifficulty(double starDifficulty, int maxCombo)
         {
             Stars = double.IsFinite(starDifficulty) ? starDifficulty : 0;
+            MaxCombo = maxCombo;
+            Attributes = null;
+        }
+
+        /// <summary>
+        /// Creates a <see cref="StarDifficulty"/> structure with a pre-populated star difficulty and max combo
+        /// in scenarios where computing <see cref="DifficultyAttributes"/> is not feasible (i.e. when working with online sources).
+        /// </summary>
+        public StarDifficulty(string difficulty, double starDifficulty, int maxCombo)
+        {
+            Stars = double.IsFinite(starDifficulty) ? starDifficulty : 0;
+            difficultyName = difficulty;
             MaxCombo = maxCombo;
             Attributes = null;
         }
@@ -63,19 +85,19 @@ namespace osu.Game.Beatmaps
         /// <returns>The <see cref="DifficultyRating"/> that best describes <paramref name="starRating"/>.</returns>
         public static DifficultyRating GetDifficultyRating(double starRating)
         {
-            if (Precision.AlmostBigger(starRating, 6.5, 0.005))
+            if (Precision.AlmostBigger(starRating, 15.0, 0.005))
                 return DifficultyRating.ExpertPlus;
 
-            if (Precision.AlmostBigger(starRating, 5.3, 0.005))
+            if (Precision.AlmostBigger(starRating, 12.0, 0.005))
                 return DifficultyRating.Expert;
 
-            if (Precision.AlmostBigger(starRating, 4.0, 0.005))
+            if (Precision.AlmostBigger(starRating, 9.0, 0.005))
                 return DifficultyRating.Insane;
 
-            if (Precision.AlmostBigger(starRating, 2.7, 0.005))
+            if (Precision.AlmostBigger(starRating, 6.0, 0.005))
                 return DifficultyRating.Hard;
 
-            if (Precision.AlmostBigger(starRating, 2.0, 0.005))
+            if (Precision.AlmostBigger(starRating, 3.0, 0.005))
                 return DifficultyRating.Normal;
 
             return DifficultyRating.Easy;

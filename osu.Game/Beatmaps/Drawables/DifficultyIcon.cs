@@ -13,8 +13,10 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.UserInterface;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Containers;
+using osu.Game.Graphics.Sprites;
 using osu.Game.Rulesets;
 using osu.Game.Rulesets.Mods;
+using osu.Game.Overlays;
 using osuTK;
 using osuTK.Graphics;
 
@@ -47,6 +49,7 @@ namespace osu.Game.Beatmaps.Drawables
         private readonly Container iconContainer;
 
         private readonly BindableWithCurrent<StarDifficulty> difficulty = new BindableWithCurrent<StarDifficulty>();
+        private readonly OsuSpriteText starsText;
 
         public virtual Bindable<StarDifficulty> Current
         {
@@ -56,6 +59,9 @@ namespace osu.Game.Beatmaps.Drawables
 
         [Resolved]
         private IRulesetStore rulesets { get; set; } = null!;
+
+        [Resolved]
+        private OverlayColourProvider? colourProvider { get; set; }
 
         /// <summary>
         /// Creates a new <see cref="DifficultyIcon"/>. Will use provided beatmap's <see cref="BeatmapInfo.StarRating"/> for initial value.
@@ -82,11 +88,6 @@ namespace osu.Game.Beatmaps.Drawables
 
             AutoSizeAxes = Axes.Both;
             InternalChild = iconContainer = new Container { Size = new Vector2(20f) };
-        }
-
-        [BackgroundDependencyLoader]
-        private void load(OsuColour colours)
-        {
             iconContainer.Children = new Drawable[]
             {
                 new CircularContainer
@@ -95,6 +96,8 @@ namespace osu.Game.Beatmaps.Drawables
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Masking = true,
+                    BorderThickness = 1,
+                    BorderColour = Color4.White,
                     EdgeEffect = new EdgeEffectParameters
                     {
                         Colour = Color4.Black.Opacity(0.06f),
@@ -106,17 +109,29 @@ namespace osu.Game.Beatmaps.Drawables
                         RelativeSizeAxes = Axes.Both,
                     },
                 },
-                new ConstrainedIconContainer
+                starsText = new OsuSpriteText
                 {
+                    //RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    RelativeSizeAxes = Axes.Both,
-                    // the null coalesce here is only present to make unit tests work (ruleset dlls aren't copied correctly for testing at the moment)
-                    Icon = getRulesetIcon()
+                    Margin = new MarginPadding { Bottom = 1.5f },
+                    // todo: this should be size: 12f, but to match up with the design, it needs to be 14.4f
+                    // see https://github.com/ppy/osu-framework/issues/3271.
+                    Font = OsuFont.GetFont(size: 20, italics: true, weight: FontWeight.SemiBold),
+                    Shadow = false,
                 },
             };
+        }
 
-            Current.BindValueChanged(difficulty => background.Colour = colours.ForStarDifficulty(difficulty.NewValue.Stars), true);
+        [BackgroundDependencyLoader]
+        private void load(OsuColour colours)
+        {
+            Current.BindValueChanged(difficulty => 
+            {
+                background.Colour = colours.ForStarDifficulty(difficulty.NewValue.Stars);
+                starsText.Text = difficulty.NewValue.Stars < 0 ? "-" : ((int)(difficulty.NewValue.Stars)).ToString();
+                starsText.Colour = difficulty.NewValue.Stars >= 9 ? colours.Orange1 : colourProvider?.Background5 ?? Color4.Black.Opacity(0.75f);
+            }, true);
         }
 
         private Drawable getRulesetIcon()

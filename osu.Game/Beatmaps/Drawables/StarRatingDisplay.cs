@@ -28,6 +28,7 @@ namespace osu.Game.Beatmaps.Drawables
         private readonly Box background;
         private readonly SpriteIcon starIcon;
         private readonly OsuSpriteText starsText;
+        private readonly OsuSpriteText difficultyText;
 
         private readonly BindableWithCurrent<StarDifficulty> current = new BindableWithCurrent<StarDifficulty>();
 
@@ -40,6 +41,7 @@ namespace osu.Game.Beatmaps.Drawables
         private readonly Bindable<double> displayedStars = new BindableDouble();
 
         private readonly Container textContainer;
+        private readonly Container difficultyTextContainer;
 
         /// <summary>
         /// The currently displayed stars of this display wrapped in a bindable.
@@ -104,13 +106,30 @@ namespace osu.Game.Beatmaps.Drawables
                         {
                             new Dimension(GridSizeMode.AutoSize),
                             new Dimension(GridSizeMode.Absolute, 3f),
-                            new Dimension(GridSizeMode.AutoSize, minSize: 25f),
+                            new Dimension(GridSizeMode.AutoSize),
+                            new Dimension(GridSizeMode.Absolute, 3f),
+                            new Dimension(GridSizeMode.AutoSize),
                         },
                         RowDimensions = new[] { new Dimension(GridSizeMode.AutoSize) },
                         Content = new[]
                         {
                             new[]
                             {
+                                difficultyTextContainer = new Container
+                                {
+                                    AutoSizeAxes = Axes.Y,
+                                    Child = difficultyText = new OsuSpriteText
+                                    {
+                                        Anchor = Anchor.Centre,
+                                        Origin = Anchor.Centre,
+                                        Margin = new MarginPadding { Bottom = 1.5f },
+                                        // todo: this should be size: 12f, but to match up with the design, it needs to be 14.4f
+                                        // see https://github.com/ppy/osu-framework/issues/3271.
+                                        Font = OsuFont.Torus.With(size: 14.4f, weight: FontWeight.Bold),
+                                        Shadow = false,
+                                    },
+                                },
+                                Empty(),
                                 starIcon = new SpriteIcon
                                 {
                                     Anchor = Anchor.Centre,
@@ -157,16 +176,22 @@ namespace osu.Game.Beatmaps.Drawables
             displayedStars.BindValueChanged(s =>
             {
                 starsText.Text = s.NewValue < 0 ? "-" : s.NewValue.ToLocalisableString("0.00");
+                
+                if (Current.Value.difficultyName != null) {
+                    difficultyText.Text = Current.Value.difficultyName.ToUpperInvariant();
+                }
 
                 background.Colour = colours.ForStarDifficulty(s.NewValue);
 
-                starIcon.Colour = s.NewValue >= 8 ? colours.Orange1 : colourProvider?.Background5 ?? Color4Extensions.FromHex("303d47");
-                starsText.Colour = s.NewValue >= 8 ? colours.Orange1 : colourProvider?.Background5 ?? Color4.Black.Opacity(0.75f);
+                starIcon.Colour = s.NewValue >= 9 ? colours.Orange1 : colourProvider?.Background5 ?? Color4Extensions.FromHex("303d47");
+                starsText.Colour = s.NewValue >= 9 ? colours.Orange1 : colourProvider?.Background5 ?? Color4.Black.Opacity(0.75f);
+                difficultyText.Colour = s.NewValue >= 9 ? colours.Orange1 : colourProvider?.Background5 ?? Color4.Black.Opacity(0.75f);
 
                 // In order to avoid autosize throwing the width of these displays all over the place,
                 // let's lock in some sane defaults for the text width based on how many digits we're
                 // displaying.
-                textContainer.Width = 24 + Math.Max(starsText.Text.ToString().Length - 4, 0) * 6;
+                textContainer.Width = starsText.Text.ToString().Length * 6f;
+                difficultyTextContainer.Width = difficultyText.Text.ToString().Length * 7.5f;
             }, true);
         }
     }

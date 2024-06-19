@@ -255,7 +255,7 @@ namespace osu.Game.Screens.Select
                         Spacing = new Vector2(0f, 5f),
                         Children = new Drawable[]
                         {
-                            starRatingDisplay = new StarRatingDisplay(default, animated: true)
+                            starRatingDisplay = new StarRatingDisplay(new StarDifficulty(beatmapInfo.DifficultyName, beatmapInfo.StarRating, (beatmapInfo as IBeatmapOnlineInfo)?.MaxCombo ?? 0), animated: true)
                             {
                                 Anchor = Anchor.TopRight,
                                 Origin = Anchor.TopRight,
@@ -296,12 +296,6 @@ namespace osu.Game.Screens.Select
                             ArtistLabel = new TruncatingSpriteText
                             {
                                 Current = { BindTarget = artistBinding },
-                                Font = OsuFont.GetFont(size: 17, italics: true),
-                                RelativeSizeAxes = Axes.X,
-                            },
-                            VersionLabel = new TruncatingSpriteText
-                            {
-                                Text = beatmapInfo.DifficultyName,
                                 Font = OsuFont.GetFont(size: 17, italics: true),
                                 RelativeSizeAxes = Axes.X,
                             },

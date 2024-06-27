@@ -303,8 +303,8 @@ namespace osu.Game.Screens.Select
                                                 {
                                                     Bottom = Select.Footer.HEIGHT,
                                                     Top = WEDGE_HEIGHT + 20,
-                                                    Left = left_area_padding,
-                                                    Right = left_area_padding * 2,
+                                                    Left = LEFT_AREA_PADDING,
+                                                    Right = LEFT_AREA_PADDING * 2,
                                                 },
                                                 Child = BeatmapDetails = CreateBeatmapDetailArea().With(d =>
                                                 {

@@ -27,6 +27,7 @@ using osu.Game.Rulesets.Mania.Mods;
 using osu.Game.Rulesets.Mania.Replays;
 using osu.Game.Rulesets.Mania.Scoring;
 using osu.Game.Rulesets.Mania.Skinning.Argon;
+using osu.Game.Rulesets.Mania.Skinning.KisekiWhite;
 using osu.Game.Rulesets.Mania.Skinning.Default;
 using osu.Game.Rulesets.Mania.Skinning.Legacy;
 using osu.Game.Rulesets.Mania.UI;
@@ -39,6 +40,7 @@ using osu.Game.Scoring;
 using osu.Game.Screens.Edit.Setup;
 using osu.Game.Screens.Ranking.Statistics;
 using osu.Game.Skinning;
+using osu.Game.Skinning.Skins;
 
 namespace osu.Game.Rulesets.Mania
 {
@@ -88,6 +90,9 @@ namespace osu.Game.Rulesets.Mania
 
                 case LegacySkin:
                     return new ManiaLegacySkinTransformer(skin, beatmap);
+
+                case KisekiWhiteSkin:
+                    return new KisekiWhiteSkinTransformer(skin, beatmap);
             }
 
             return null;

@@ -343,3 +343,22 @@ FodyWeavers.xsd
 
 .idea/.idea.osu.Desktop/.idea/misc.xml
 .idea/.idea.osu.Android/.idea/deploymentTargetDropDown.xml
+osu.Game.Rulesets.Mania/Skinning/Argon/ArgonKeyArea copy
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteStageForeground.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteStageBackground.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteSkinTransformer.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteNotePieceFX.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteNotePieceCircle.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteNotePiece.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteKeyArea.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteJudgementPiece.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHoldNoteTailPiece.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHoldNoteHittingLayer.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHoldNoteHeadPieceFX.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHoldNoteHeadPieceCircle.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHoldNoteHeadPiece.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHoldBodyPiece.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHitTarget.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteHitExplosion.cs
+osu.Game.Rulesets.Mania/Skinning/KisekiWhite/KisekiWhiteColumnBackground.cs
+osu.Game/Skinning/Skins/KisekiWhiteSkin.cs

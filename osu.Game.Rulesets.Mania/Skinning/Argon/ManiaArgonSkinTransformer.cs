@@ -40,6 +40,9 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                         case ManiaSkinComponents.StageBackground:
                             return new ArgonStageBackground();
 
+                        case ManiaSkinComponents.StageForeground:
+                            return new ArgonStageForeground();
+
                         case ManiaSkinComponents.ColumnBackground:
                             return new ArgonColumnBackground();
 

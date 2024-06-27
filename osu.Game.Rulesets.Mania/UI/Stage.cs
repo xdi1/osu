@@ -35,7 +35,7 @@ namespace osu.Game.Rulesets.Mania.UI
 
         public const float COLUMN_SPACING = 1;
 
-        public const float HIT_TARGET_POSITION = 150;
+        public const float HIT_TARGET_POSITION = 216;
 
         public Column[] Columns => columnFlow.Content;
         private readonly ColumnFlowMax<Column> columnFlow;
@@ -69,8 +69,8 @@ namespace osu.Game.Rulesets.Mania.UI
 
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            RelativeSizeAxes = Axes.Y;
-            AutoSizeAxes = Axes.X;
+            RelativeSizeAxes = Axes.Both;
+            //AutoSizeAxes = Axes.X;
 
             Container columnBackgrounds;
             Container topLevelContainer;
@@ -182,8 +182,8 @@ namespace osu.Game.Rulesets.Mania.UI
 
             Padding = new MarginPadding
             {
-                Top = paddingTop,
-                Bottom = paddingBottom,
+                Top = 0,
+                Bottom = 0,
             };
         }
 

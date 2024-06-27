@@ -20,6 +20,7 @@ using osu.Framework.IO.Stores;
 using osu.Framework.Platform;
 using osu.Framework.Threading;
 using osu.Framework.Utils;
+using osu.Game.Skinning.Skins;
 using osu.Game.Audio;
 using osu.Game.Database;
 using osu.Game.IO;
@@ -96,6 +97,7 @@ namespace osu.Game.Skinning
                 argonSkin = new ArgonSkin(this),
                 new ArgonProSkin(this),
                 new ArgonMaxSkin(this),
+                new KisekiWhiteSkin(this)
             };
 
             // Ensure the default entries are present.

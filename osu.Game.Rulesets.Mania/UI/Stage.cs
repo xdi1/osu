@@ -182,8 +182,8 @@ namespace osu.Game.Rulesets.Mania.UI
 
             Padding = new MarginPadding
             {
-                Top = 0,
-                Bottom = 0,
+                Top = paddingTop,
+                Bottom = paddingBottom,
             };
         }
 

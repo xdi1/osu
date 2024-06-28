@@ -34,11 +34,11 @@ namespace osu.Game.Screens.Play.HUD
                 switch (scoreMode.NewValue)
                 {
                     case ScoringMode.Standardised:
-                        RequiredDisplayDigits.Value = 6;
+                        RequiredDisplayDigits.Value = 1;
                         break;
 
                     case ScoringMode.Classic:
-                        RequiredDisplayDigits.Value = 8;
+                        RequiredDisplayDigits.Value = 1;
                         break;
 
                     default:

@@ -175,7 +175,7 @@ namespace osu.Game.Graphics.UserInterface
         /// </summary>
         protected virtual OsuSpriteText CreateSpriteText() => new OsuSpriteText
         {
-            Font = OsuFont.Numeric.With(size: 40f),
+            Font = OsuFont.Torus.With(size: 12, weight: FontWeight.Bold),
         };
     }
 }

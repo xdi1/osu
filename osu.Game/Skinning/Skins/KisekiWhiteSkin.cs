@@ -119,12 +119,27 @@ namespace osu.Game.Skinning.Skins
                                 var health = container.OfType<ArgonHealthDisplay>().FirstOrDefault();
                                 var healthLine = container.OfType<BoxElement>().FirstOrDefault();
                                 var wedgePieces = container.OfType<ArgonWedgePiece>().ToArray();
-                                var score = container.OfType<ArgonScoreCounter>().FirstOrDefault();
-                                var accuracy = container.OfType<ArgonAccuracyCounter>().FirstOrDefault();
+                                var score = container.OfType<KisekiWhiteScoreCounter>().FirstOrDefault();
+                                var accuracy = container.OfType<DefaultAccuracyCounter>().FirstOrDefault();
                                 var performancePoints = container.OfType<ArgonPerformancePointsCounter>().FirstOrDefault();
                                 var combo = container.OfType<ArgonComboCounter>().FirstOrDefault();
                                 var songProgress = container.OfType<ArgonSongProgress>().FirstOrDefault();
                                 var keyCounter = container.OfType<ArgonKeyCounterDisplay>().FirstOrDefault();
+                                
+                                if (accuracy != null)
+                                {
+                                    // +4 to vertically align the accuracy counter with the score counter.
+                                    accuracy.Position = new Vector2(0, 20);
+                                    accuracy.Anchor = Anchor.Centre;
+                                    accuracy.Origin = Anchor.Centre;
+                                }
+
+                                if (score != null)
+                                {
+                                    score.Anchor = Anchor.BottomCentre;
+                                    score.Origin = Anchor.BottomCentre;
+                                    score.Position = new Vector2(0, -10);
+                                }
 
                                 if (health != null)
                                 {
@@ -147,21 +162,7 @@ namespace osu.Game.Skinning.Skins
                                     }
 
                                     foreach (var wedgePiece in wedgePieces)
-                                        wedgePiece.Position += new Vector2(-50, 15);
-
-                                    if (score != null)
-                                    {
-                                        score.Origin = Anchor.TopRight;
-                                        score.Position = new Vector2(components_x_offset + 200, wedgePieces.Last().Y + 30);
-                                    }
-
-                                    if (accuracy != null)
-                                    {
-                                        // +4 to vertically align the accuracy counter with the score counter.
-                                        accuracy.Position = new Vector2(-20, 20);
-                                        accuracy.Anchor = Anchor.TopRight;
-                                        accuracy.Origin = Anchor.TopRight;
-                                    }
+                                        wedgePiece.Position += new Vector2(-50, 15);    
 
                                     if (performancePoints != null && accuracy != null)
                                     {
@@ -216,37 +217,12 @@ namespace osu.Game.Skinning.Skins
                             {
                                 Children = new Drawable[]
                                 {
-                                    new ArgonWedgePiece
+                                    new DefaultAccuracyCounter
                                     {
-                                        Size = new Vector2(380, 72),
-                                    },
-                                    new ArgonWedgePiece
-                                    {
-                                        Size = new Vector2(380, 72),
-                                        Position = new Vector2(4, 5)
-                                    },
-                                    new ArgonScoreCounter
-                                    {
+                                        Scale = new Vector2(0.30f),
                                         ShowLabel = { Value = false },
                                     },
-                                    new ArgonHealthDisplay(),
-                                    new BoxElement
-                                    {
-                                        CornerRadius = { Value = 0.5f }
-                                    },
-                                    new ArgonAccuracyCounter(),
-                                    new ArgonPerformancePointsCounter
-                                    {
-                                        Scale = new Vector2(0.8f),
-                                    },
-                                    new ArgonComboCounter
-                                    {
-                                        Scale = new Vector2(1.3f)
-                                    },
-                                    new BarHitErrorMeter(),
-                                    new BarHitErrorMeter(),
-                                    new ArgonSongProgress(),
-                                    new ArgonKeyCounterDisplay(),
+                                    new KisekiWhiteScoreCounter()
                                 }
                             };
 

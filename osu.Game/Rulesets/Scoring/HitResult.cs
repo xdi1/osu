@@ -216,7 +216,13 @@ namespace osu.Game.Rulesets.Scoring
                 // ComboBreak is a special type that only affects combo. It cannot be considered as basic, tick, bonus, or accuracy-affecting.
                 case HitResult.ComboBreak:
                     return false;
-
+                case HitResult.Miss:
+                case HitResult.Meh:
+                case HitResult.Ok:
+                case HitResult.Good:
+                case HitResult.Great:
+                case HitResult.Perfect:
+                    return true;
                 default:
                     return IsScorable(result) && !IsBonus(result);
             }

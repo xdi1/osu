@@ -133,7 +133,7 @@ namespace osu.Game.Rulesets.Scoring
         /// <remarks>
         /// Used to compute accuracy.
         /// </remarks>
-        private double currentBaseScore;
+        private double currentBaseScore = 0;
 
         /// <summary>
         /// The maximum sum of all accuracy-affecting judgements in the beatmap.
@@ -364,7 +364,7 @@ namespace osu.Game.Rulesets.Scoring
 
         private void updateScore()
         {
-            Accuracy.Value = currentMaximumBaseScore > 0 ? currentBaseScore / currentMaximumBaseScore : 1;
+            Accuracy.Value = currentMaximumBaseScore > 0  ? currentBaseScore / currentMaximumBaseScore : 0;
             MinimumAccuracy.Value = maximumBaseScore > 0 ? currentBaseScore / maximumBaseScore : 0;
             MaximumAccuracy.Value = maximumBaseScore > 0 ? (currentBaseScore + (maximumBaseScore - currentMaximumBaseScore)) / maximumBaseScore : 1;
 
@@ -432,7 +432,7 @@ namespace osu.Game.Rulesets.Scoring
             currentBonusPortion = 0;
 
             TotalScore.Value = 0;
-            Accuracy.Value = 1;
+            Accuracy.Value = 0;
             Combo.Value = 0;
             HighestCombo.Value = 0;
             updateRank();

@@ -20,10 +20,8 @@ namespace osu.Game.Rulesets.Mania.Edit.Setup
         public override LocalisableString Title => EditorSetupStrings.DifficultyHeader;
 
         private LabelledSliderBar<float> keyCountSlider { get; set; } = null!;
-        private LabelledSliderBar<float> healthDrainSlider { get; set; } = null!;
         private LabelledSliderBar<float> overallDifficultySlider { get; set; } = null!;
-        private LabelledSliderBar<double> baseVelocitySlider { get; set; } = null!;
-        private LabelledSliderBar<double> tickRateSlider { get; set; } = null!;
+        protected LabelledSliderBar<float> starRatingSlider { get; private set; } = null!;
 
         [Resolved]
         private Editor? editor { get; set; }
@@ -49,17 +47,17 @@ namespace osu.Game.Rulesets.Mania.Edit.Setup
                         Precision = 1,
                     }
                 },
-                healthDrainSlider = new LabelledSliderBar<float>
+                starRatingSlider = new LabelledSliderBar<float>
                 {
-                    Label = BeatmapsetsStrings.ShowStatsDrain,
+                    Label = BeatmapsetsStrings.ShowStatsStars,
                     FixedLabelWidth = LABEL_WIDTH,
-                    Description = EditorSetupStrings.DrainRateDescription,
-                    Current = new BindableFloat(Beatmap.Difficulty.DrainRate)
+                    Description = "",
+                    Current = new BindableFloat((float)Beatmap.BeatmapInfo.StarRating)
                     {
-                        Default = BeatmapDifficulty.DEFAULT_DIFFICULTY,
+                        Default = 1,
                         MinValue = 0,
-                        MaxValue = 10,
-                        Precision = 0.1f,
+                        MaxValue = 15,
+                        Precision = 1f,
                     }
                 },
                 overallDifficultySlider = new LabelledSliderBar<float>
@@ -75,39 +73,12 @@ namespace osu.Game.Rulesets.Mania.Edit.Setup
                         Precision = 0.1f,
                     }
                 },
-                baseVelocitySlider = new LabelledSliderBar<double>
-                {
-                    Label = EditorSetupStrings.BaseVelocity,
-                    FixedLabelWidth = LABEL_WIDTH,
-                    Description = EditorSetupStrings.BaseVelocityDescription,
-                    Current = new BindableDouble(Beatmap.Difficulty.SliderMultiplier)
-                    {
-                        Default = 1.4,
-                        MinValue = 0.4,
-                        MaxValue = 3.6,
-                        Precision = 0.01f,
-                    }
-                },
-                tickRateSlider = new LabelledSliderBar<double>
-                {
-                    Label = EditorSetupStrings.TickRate,
-                    FixedLabelWidth = LABEL_WIDTH,
-                    Description = EditorSetupStrings.TickRateDescription,
-                    Current = new BindableDouble(Beatmap.Difficulty.SliderTickRate)
-                    {
-                        Default = 1,
-                        MinValue = 1,
-                        MaxValue = 4,
-                        Precision = 1,
-                    }
-                },
+                
             };
 
             keyCountSlider.Current.BindValueChanged(updateKeyCount);
-            healthDrainSlider.Current.BindValueChanged(_ => updateValues());
             overallDifficultySlider.Current.BindValueChanged(_ => updateValues());
-            baseVelocitySlider.Current.BindValueChanged(_ => updateValues());
-            tickRateSlider.Current.BindValueChanged(_ => updateValues());
+            starRatingSlider.Current.BindValueChanged(_ => updateValues());
         }
 
         private bool updatingKeyCount;
@@ -145,10 +116,8 @@ namespace osu.Game.Rulesets.Mania.Edit.Setup
             // for now, update these on commit rather than making BeatmapMetadata bindables.
             // after switching database engines we can reconsider if switching to bindables is a good direction.
             Beatmap.Difficulty.CircleSize = keyCountSlider.Current.Value;
-            Beatmap.Difficulty.DrainRate = healthDrainSlider.Current.Value;
             Beatmap.Difficulty.OverallDifficulty = overallDifficultySlider.Current.Value;
-            Beatmap.Difficulty.SliderMultiplier = baseVelocitySlider.Current.Value;
-            Beatmap.Difficulty.SliderTickRate = tickRateSlider.Current.Value;
+            Beatmap.BeatmapInfo.StarRating = starRatingSlider.Current.Value;
 
             Beatmap.UpdateAllHitObjects();
             Beatmap.SaveState();

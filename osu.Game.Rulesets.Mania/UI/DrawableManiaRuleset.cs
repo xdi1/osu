@@ -131,7 +131,7 @@ namespace osu.Game.Rulesets.Mania.UI
         {
             hitPosition = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
                               new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.HitPosition))?.Value
-                          ?? Stage.HIT_TARGET_POSITION;
+                          ?? Stage.hitTargetPosition;
 
             pendingSkinChange = null;
         }

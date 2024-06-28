@@ -48,7 +48,7 @@ namespace osu.Game.Rulesets.Mania.UI.Components
         {
             float hitPosition = CurrentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(
                                     new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.HitPosition))?.Value
-                                ?? Stage.HIT_TARGET_POSITION;
+                                ?? Stage.hitTargetPosition;
 
             Padding = Direction.Value == ScrollingDirection.Up
                 ? new MarginPadding { Top = hitPosition }

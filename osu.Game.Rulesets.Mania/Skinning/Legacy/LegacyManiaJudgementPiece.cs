@@ -35,7 +35,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Legacy
             float? scorePosition = skin.GetManiaSkinConfig<float>(LegacyManiaSkinConfigurationLookups.ScorePosition)?.Value;
 
             if (scorePosition != null)
-                scorePosition -= Stage.HIT_TARGET_POSITION + 150;
+                scorePosition -= Stage.hitTargetPosition + 150;
 
             Y = scorePosition ?? 0;
 

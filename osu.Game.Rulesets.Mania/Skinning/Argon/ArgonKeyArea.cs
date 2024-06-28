@@ -26,6 +26,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
         private Container directionContainer = null!;
         private Drawable background = null!;
 
+        private const float HIT_TARGET_POSITION = 150;
         private Circle hitTargetLine = null!;
 
         private Container<Circle> bottomIcon = null!;
@@ -54,7 +55,7 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                 // Ensure the area is tall enough to put the target line in the correct location.
                 // This is to also allow the main background component to overlap the target line
                 // and avoid an inner corner radius being shown below the target line.
-                Height = Stage.HIT_TARGET_POSITION - ArgonNotePiece.CORNER_RADIUS * 3,
+                Height = HIT_TARGET_POSITION - ArgonNotePiece.CORNER_RADIUS * 3,
                 Children = new[]
                 {
                     new Container

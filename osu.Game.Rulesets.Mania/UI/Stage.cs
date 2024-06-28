@@ -35,7 +35,7 @@ namespace osu.Game.Rulesets.Mania.UI
 
         public const float COLUMN_SPACING = 1;
 
-        public const float HIT_TARGET_POSITION = 216;
+        public static float hitTargetPosition = 150;
 
         public Column[] Columns => columnFlow.Content;
         private readonly ColumnFlowMax<Column> columnFlow;
@@ -123,8 +123,7 @@ namespace osu.Game.Rulesets.Mania.UI
                         {
                             Anchor = Anchor.TopCentre,
                             Origin = Anchor.Centre,
-                            RelativeSizeAxes = Axes.Both,
-                            Y = HIT_TARGET_POSITION + 150
+                            RelativeSizeAxes = Axes.Both
                         },
                         topLevelContainer = new Container { RelativeSizeAxes = Axes.Both }
                     }
@@ -185,6 +184,9 @@ namespace osu.Game.Rulesets.Mania.UI
                 Top = paddingTop,
                 Bottom = paddingBottom,
             };
+
+            hitTargetPosition = currentSkin.GetConfig<ManiaSkinConfigurationLookup, float>(new ManiaSkinConfigurationLookup(LegacyManiaSkinConfigurationLookups.HitPosition))?.Value ?? 0;
+            judgements.Y = hitTargetPosition + 100;
         }
 
         protected override void Dispose(bool isDisposing)

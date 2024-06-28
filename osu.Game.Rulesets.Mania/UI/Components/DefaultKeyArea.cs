@@ -46,7 +46,7 @@ namespace osu.Game.Rulesets.Mania.UI.Components
             InternalChild = directionContainer = new Container
             {
                 RelativeSizeAxes = Axes.X,
-                Height = Stage.HIT_TARGET_POSITION,
+                Height = Stage.hitTargetPosition,
                 Children = new[]
                 {
                     gradient = new Box

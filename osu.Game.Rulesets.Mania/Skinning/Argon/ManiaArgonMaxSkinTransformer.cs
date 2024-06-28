@@ -153,6 +153,8 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                         return SkinUtils.As<TValue>(new Bindable<float>(60));
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
+                    case LegacyManiaSkinConfigurationLookups.HitPosition:
+                        return SkinUtils.As<TValue>(new Bindable<float>(150));
                     case LegacyManiaSkinConfigurationLookups.ColumnWidth:
                         
                         if (columnIndex == 0 || columnIndex == 1 || (columnIndex == columnCount - 1) || (columnIndex == columnCount - 2))

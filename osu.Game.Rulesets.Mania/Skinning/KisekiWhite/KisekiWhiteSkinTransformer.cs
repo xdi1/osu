@@ -152,6 +152,8 @@ namespace osu.Game.Rulesets.Mania.Skinning.KisekiWhite
                         return SkinUtils.As<TValue>(new Bindable<float>(0));
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(0));
+                    case LegacyManiaSkinConfigurationLookups.HitPosition:
+                        return SkinUtils.As<TValue>(new Bindable<float>(216));
                     case LegacyManiaSkinConfigurationLookups.ColumnWidth:
                         
                         if (columnIndex == 0 || columnIndex == 1 || (columnIndex == columnCount - 1) || (columnIndex == columnCount - 2))

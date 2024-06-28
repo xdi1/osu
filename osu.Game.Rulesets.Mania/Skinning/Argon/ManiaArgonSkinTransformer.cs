@@ -195,6 +195,8 @@ namespace osu.Game.Rulesets.Mania.Skinning.Argon
                     case LegacyManiaSkinConfigurationLookups.StagePaddingBottom:
                     case LegacyManiaSkinConfigurationLookups.StagePaddingTop:
                         return SkinUtils.As<TValue>(new Bindable<float>(30));
+                    case LegacyManiaSkinConfigurationLookups.HitPosition:
+                        return SkinUtils.As<TValue>(new Bindable<float>(150));
                     case LegacyManiaSkinConfigurationLookups.ColumnWidth:
                         bool isSpecialColumn = stage.IsSpecialColumn(columnIndex);
 

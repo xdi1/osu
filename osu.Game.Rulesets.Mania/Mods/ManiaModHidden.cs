@@ -95,7 +95,7 @@ namespace osu.Game.Rulesets.Mania.Mods
             protected override float GetHeight(float coverage)
             {
                 // In osu!stable, the cover is applied in absolute (x768) coordinates from the hit position.
-                float availablePlayfieldHeight = Math.Abs(reference_playfield_height - (hitPosition?.Value ?? Stage.HIT_TARGET_POSITION));
+                float availablePlayfieldHeight = Math.Abs(reference_playfield_height - (hitPosition?.Value ?? Stage.hitTargetPosition));
 
                 if (availablePlayfieldHeight == 0)
                     return base.GetHeight(coverage);
